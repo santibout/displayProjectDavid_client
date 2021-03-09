@@ -32,7 +32,7 @@ class StepThree extends Component {
 
             <div className="mb-3">
               <label htmlFor="highSchool" className="form-label">
-                High School Information
+                Name Of High School You Last Attended
               </label>
               <input
                 className="form-control"
@@ -41,13 +41,13 @@ class StepThree extends Component {
                 name="highSchool"
                 value={this.props.highSchool}
                 onChange={this.props.handleChange}
-                placeholder="Hoover High School"
+                placeholder="example Hoover High School"
               />
             </div>
 
             <div className="mb-3">
               <label htmlFor="highSchoolCityState" className="form-label">
-                High School City And State
+                What CITY And STATE Was Your High School In? 
               </label>
               <input
                 className="form-control"
@@ -56,13 +56,13 @@ class StepThree extends Component {
                 name="highSchoolCityState"
                 value={this.props.highSchoolCityState}
                 onChange={this.props.handleChange}
-                placeholder="Huntington Beach, CA"
+                placeholder="example Huntington Beach, CA"
               />
             </div>
 
             <div className="mb-3">
               <label htmlFor="highSchoolMonthYearGraduation" className="form-label">
-                High School Graduation Month And Year
+                What was the MONTH And YEAR You Graduated High School?
               </label>
               <input
                 className="form-control"

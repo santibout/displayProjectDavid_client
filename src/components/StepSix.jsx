@@ -4,16 +4,16 @@ class StepSix extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      anotherCollege: false,
+      anotherCollege: '',
     };
   }
 
   toggleAnotherCollegeOn = () => {
-    this.setState({ anotherCollege: true });
+    this.setState({ anotherCollege: 'true' });
   };
 
   toggleAnotherCollegeOff = () => {
-    this.setState({ anotherCollege: false });
+    this.setState({ anotherCollege: 'false' });
   };
 
   render() {
@@ -26,7 +26,10 @@ class StepSix extends Component {
         <div className="row">
           <div className="col-md">
             <div className="mb-3">
-              <label htmlFor="thirdCollegeAttendedDescription" className="form-label">
+              <label
+                htmlFor="thirdCollegeAttendedDescription"
+                className="form-label"
+              >
                 3rd College Attended
               </label>
               <input
@@ -42,7 +45,7 @@ class StepSix extends Component {
 
             <div className="mb-3">
               <label htmlFor="thirdCollegeName" className="form-label">
-                3rd College Name
+                What Is The Name Of College 3
               </label>
               <input
                 className="form-control"
@@ -60,7 +63,7 @@ class StepSix extends Component {
                 htmlFor="thirdCollegeStartMonthYear"
                 className="form-label"
               >
-                3rd College Start Month And Year
+                What Is The Month And Year You Started At College 3
               </label>
               <input
                 className="form-control"
@@ -74,11 +77,8 @@ class StepSix extends Component {
             </div>
 
             <div className="mb-3">
-              <label
-                htmlFor="thirdCollegeStopMonthYear"
-                className="form-label"
-              >
-                3rd College STOP Month And Year
+              <label htmlFor="thirdCollegeStopMonthYear" className="form-label">
+                What Is The Month And Year You STOPPED At College 3
               </label>
               <input
                 className="form-control"
@@ -87,7 +87,7 @@ class StepSix extends Component {
                 name="thirdCollegeStopMonthYear"
                 value={this.props.thirdCollegeStopMonthYear}
                 onChange={this.props.handleChange}
-                placeholder="example July 2020"
+                placeholder="example August 2020"
               />
             </div>
 
@@ -101,12 +101,13 @@ class StepSix extends Component {
               >
                 <div className="form-check">
                   <input
-                    onClick={this.toggleAnotherCollegeOn}
+                    onChange={this.toggleAnotherCollegeOn}
                     className="form-check-input"
                     type="radio"
                     name="hasAttendedAnotherCollege3"
                     id="yes"
                     value="Yes"
+                    checked={this.state.anotherCollege === 'true'}
                   />
                   <label className="form-check-label" htmlFor="yes">
                     Yes
@@ -114,12 +115,13 @@ class StepSix extends Component {
                 </div>
                 <div className="form-check">
                   <input
-                    onClick={this.toggleAnotherCollegeOff}
+                    onChange={this.toggleAnotherCollegeOff}
                     className="form-check-input"
                     type="radio"
                     name="hasAttendedAnotherCollege3"
                     id="no"
                     value="No"
+                    checked={this.state.anotherCollege === 'false'}
                   />
                   <label className="form-check-label" htmlFor="no">
                     No
@@ -127,7 +129,7 @@ class StepSix extends Component {
                 </div>
               </div>
             </div>
-            {this.state.anotherCollege ? (
+            {this.state.anotherCollege === 'true' ? (
               <p>Go To Next Section </p>
             ) : (
               <p>Go To Section 9 (Any Additional Time After High School)</p>

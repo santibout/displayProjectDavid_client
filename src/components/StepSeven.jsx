@@ -4,16 +4,16 @@ class StepSeven extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      anotherCollege: false,
+      anotherCollege: "",
     };
   }
 
   toggleAnotherCollegeOn = () => {
-    this.setState({ anotherCollege: true });
+    this.setState({ anotherCollege: "true" });
   };
 
   toggleAnotherCollegeOff = () => {
-    this.setState({ anotherCollege: false });
+    this.setState({ anotherCollege: "false" });
   };
 
   render() {
@@ -26,7 +26,10 @@ class StepSeven extends Component {
         <div className="row">
           <div className="col-md">
             <div className="mb-3">
-              <label htmlFor="fourthCollegeAttendedDescription" className="form-label">
+              <label
+                htmlFor="fourthCollegeAttendedDescription"
+                className="form-label"
+              >
                 4th College Attended
               </label>
               <input
@@ -101,12 +104,13 @@ class StepSeven extends Component {
               >
                 <div className="form-check">
                   <input
-                    onClick={this.toggleAnotherCollegeOn}
+                    onChange={this.toggleAnotherCollegeOn}
                     className="form-check-input"
                     type="radio"
                     name="hasAttendedAnotherCollege4"
                     id="yes"
                     value="Yes"
+                    checked={this.state.anotherCollege === "true"}
                   />
                   <label className="form-check-label" htmlFor="yes">
                     Yes
@@ -114,12 +118,13 @@ class StepSeven extends Component {
                 </div>
                 <div className="form-check">
                   <input
-                    onClick={this.toggleAnotherCollegeOff}
+                    onChange={this.toggleAnotherCollegeOff}
                     className="form-check-input"
                     type="radio"
                     name="hasAttendedAnotherCollege4"
                     id="no"
                     value="No"
+                    checked={this.state.anotherCollege === "false"}
                   />
                   <label className="form-check-label" htmlFor="no">
                     No
@@ -127,7 +132,7 @@ class StepSeven extends Component {
                 </div>
               </div>
             </div>
-            {this.state.anotherCollege ? (
+            {this.state.anotherCollege === "true" ? (
               <p>Go To Section 8 (More Than 4 Schools)</p>
             ) : (
               <p>Go To Section 9 (Any Additional Time After High School)</p>

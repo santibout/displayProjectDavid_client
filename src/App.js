@@ -34,7 +34,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentStep: 1,
+      currentStep: 6,
       lastStep: 26,
       // Step 1
       formDescription: "",
@@ -445,6 +445,7 @@ class App extends Component {
               address2={this.state.cityStateZip}
               phoneNumber={this.state.phoneNumber}
               dob={this.state.dob}
+              studentId={this.state.studentId}
             />
             <StepTwo
               currentStep={this.state.currentStep}
@@ -457,48 +458,48 @@ class App extends Component {
             <StepThree
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              highSchoolInfo={this.highSchoolInfo}
-              highSchool={this.highSchool}
-              highSchoolCityState={this.highSchoolCityState}
-              highSchoolMonthYearGraduation={this.highSchoolMonthYearGraduation}
+              highSchoolInfo={this.state.highSchoolInfo}
+              highSchool={this.state.highSchool}
+              highSchoolCityState={this.state.highSchoolCityState}
+              highSchoolMonthYearGraduation={this.state.highSchoolMonthYearGraduation}
             />
             <StepFour
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              accountForTimesAfterHS={this.accountForTimesAfterHS}
-              previousCommunityCollege={this.previousCommunityCollege}
+              accountForTimesAfterHS={this.state.accountForTimesAfterHS}
+              previousCommunityCollege={this.state.previousCommunityCollege}
               previousCommunityCollegeStartMonthYear={
-                this.previousCommunityCollegeStartMonthYear
+                this.state.previousCommunityCollegeStartMonthYear
               }
-              hasAttendedAnotherCollege={this.hasAttendedAnotherCollege}
+              hasAttendedAnotherCollege={this.state.hasAttendedAnotherCollege}
             />
             <StepFive
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              secondCollegeAttended={this.secondCollegeAttended}
-              secondCollegeName={this.secondCollegeName}
-              secondCollegeStartMonthYear={this.secondCollegeStartMonthYear}
-              secondCollegeStopMonthYear={this.secondCollegeStopMonthYear}
-              hasAttendedAnotherCollege2={this.hasAttendedAnotherCollege2}
+              secondCollegeAttended={this.state.secondCollegeAttended}
+              secondCollegeName={this.state.secondCollegeName}
+              secondCollegeStartMonthYear={this.state.secondCollegeStartMonthYear}
+              secondCollegeStopMonthYear={this.state.secondCollegeStopMonthYear}
+              hasAttendedAnotherCollege2={this.state.hasAttendedAnotherCollege2}
             />
             <StepSix
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              thirdCollegeAttended={this.thirdCollegeAttended}
-              thirdCollegeName={this.thirdCollegeName}
-              thirdCollegeStartMonthYear={this.thirdCollegeStartMonthYear}
-              thirdCollegeStopMonthYear={this.thirdCollegeStopMonthYear}
-              hasAttendedAnotherCollege3={this.hasAttendedAnotherCollege3}
+              thirdCollegeAttendedDescription={this.state.thirdCollegeAttendedDescription}
+              thirdCollegeName={this.state.thirdCollegeName}
+              thirdCollegeStartMonthYear={this.state.thirdCollegeStartMonthYear}
+              thirdCollegeStopMonthYear={this.state.thirdCollegeStopMonthYear}
+              hasAttendedAnotherCollege3={this.state.hasAttendedAnotherCollege3}
             />
             <StepSeven
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              fourthCollegeAttended={this.fourthCollegeAttended}
-              fourthCollegeName={this.fourthCollegeName}
-              fourthCollegeStartMonthYear={this.fourthCollegeStartMonthYear}
-              fourthCollegeStopMonthYear={this.fourthCollegeStopMonthYear}
-              hasAttendedAnotherCollege4={this.hasAttendedAnotherCollege4}
+              fourthCollegeAttendedDescription={this.state.fourthCollegeAttendedDescription}
+              fourthCollegeName={this.state.fourthCollegeName}
+              fourthCollegeStartMonthYear={this.state.fourthCollegeStartMonthYear}
+              fourthCollegeStopMonthYear={this.state.fourthCollegeStopMonthYear}
+              hasAttendedAnotherCollege4={this.state.hasAttendedAnotherCollege4}
             />
             <StepEight currentStep={this.state.currentStep} />
             <StepNine

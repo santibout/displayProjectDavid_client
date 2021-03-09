@@ -4,16 +4,16 @@ class StepFour extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      anotherCollege: false,
+      anotherCollege: '',
     };
   }
 
   toggleAnotherCollegeOn = () => {
-    this.setState({ anotherCollege: true });
+    this.setState({ anotherCollege: 'true' });
   };
 
   toggleAnotherCollegeOff = () => {
-    this.setState({ anotherCollege: false });
+    this.setState({ anotherCollege: 'false' });
   };
 
   render() {
@@ -42,7 +42,7 @@ class StepFour extends Component {
 
             <div className="mb-3">
               <label htmlFor="previousCommunityCollege" className="form-label">
-                List The Community College You Had Attended
+                List The Community College You Are Currently At
               </label>
               <input
                 className="form-control"
@@ -60,7 +60,7 @@ class StepFour extends Component {
                 htmlFor="previousCommunityCollegeStartMonthYear"
                 className="form-label"
               >
-                List The Community College You Had Attended
+                What Is The Month And Year You Started At This College?
               </label>
               <input
                 className="form-control"
@@ -74,21 +74,22 @@ class StepFour extends Component {
             </div>
 
             <div className="mb-3">
-              <p>
+              <label>
                 Have You Attended Another College Besides The One You Listed?
-              </p>
+              </label>
               <div
                 className="d-flex justify-content-start"
                 onChange={this.props.handleChange}
               >
                 <div className="form-check">
                   <input
-                    onClick={this.toggleAnotherCollegeOn}
+                    onChange={this.toggleAnotherCollegeOn}
                     className="form-check-input"
                     type="radio"
                     name="hasAttendedAnotherCollege"
                     id="yes"
                     value="Yes"
+                    checked={this.state.anotherCollege === 'true'}
                   />
                   <label className="form-check-label" htmlFor="yes">
                     Yes
@@ -96,12 +97,13 @@ class StepFour extends Component {
                 </div>
                 <div className="form-check">
                   <input
-                    onClick={this.toggleAnotherCollegeOff}
+                    onChange={this.toggleAnotherCollegeOff}
                     className="form-check-input"
                     type="radio"
                     name="hasAttendedAnotherCollege"
                     id="no"
                     value="No"
+                    checked={this.state.anotherCollege === 'false'}
                   />
                   <label className="form-check-label" htmlFor="no">
                     No
@@ -109,12 +111,14 @@ class StepFour extends Component {
                 </div>
               </div>
             </div>
-
           </div>
-          {this.state.anotherCollege ? (
+          {this.state.anotherCollege === 'true' ? (
             <p>After Section 4 Go To Section 5 (2nd College Attended) </p>
           ) : (
-            <p>After Section 4 Go To Section 9 (Any Additional Time After High School)</p>
+            <p>
+              After Section 4 Go To Section 9 (Any Additional Time After High
+              School)
+            </p>
           )}
         </div>
       </div>

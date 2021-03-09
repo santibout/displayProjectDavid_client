@@ -3,7 +3,18 @@ import React, { Component } from "react";
 class StepTwo extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      sport: "",
+      conference: "",
+    };
   }
+
+  setSport = (x) => {
+    this.setState({ sport: x.target.value });
+  };
+  setConference = (x) => {
+    this.setState({ conference: x });
+  };
 
   render() {
     if (this.props.currentStep !== 2) {
@@ -41,7 +52,7 @@ class StepTwo extends Component {
                 name="communityCollege"
                 value={this.props.communityCollege}
                 onChange={this.props.handleChange}
-                placeholder="Golden West College"
+                placeholder="example: Golden West College"
               />
             </div>
 
@@ -49,8 +60,13 @@ class StepTwo extends Component {
               <label htmlFor="sport" className="form-label">
                 Sport
               </label>
-              <select className="form-select" name="sport">
-                <option defaultValue>Open this select menu</option>
+              <select
+                className="form-select"
+                name="sport"
+                value={this.state.sport}
+                onChange={this.setSport}
+              >
+                <option defaultValue>Please Select A Sport</option>
                 <option value="Men's Baseball">Men's Baseball</option>
                 <option value="Men's Basketball">Men's Basketball</option>
                 <option value="Men's Cross Country">Men's Cross Country</option>
@@ -85,11 +101,13 @@ class StepTwo extends Component {
             </div>
 
             <div className="mb-3">
-              <p>Athletic Conference</p>
-              <p className="p-small">
-                All Sport Offerings are hosted in the Orange Empire Conference
-                (OEC), except Men's Football which is hosted in the Southern
-                California Football Association (SCFA)
+              <label>Athletic Conference</label>
+              <p>
+                <small>
+                  All Sport Offerings are hosted in the Orange Empire Conference
+                  (OEC), except Men's Football which is hosted in the Southern
+                  California Football Association (SCFA)
+                </small>
               </p>
               <div
                 className="d-flex justify-content-start"
@@ -102,6 +120,13 @@ class StepTwo extends Component {
                     name="athleticConference"
                     id="oec"
                     value="Orange Empire Conference (OEC)"
+                    onChange={() =>
+                      this.setConference("Orange Empire Conference (OEC)")
+                    }
+                    checked={
+                      this.props.athleticConference ===
+                      "Orange Empire Conference (OEC)"
+                    }
                   />
                   <label className="form-check-label" htmlFor="oec">
                     Orange Empire Conference (OEC)
@@ -114,6 +139,15 @@ class StepTwo extends Component {
                     name="athleticConference"
                     id="scfa"
                     value="Southern California Football Association (SCFA)"
+                    onChange={() =>
+                      this.setConference(
+                        "Southern California Football Association (SCFA)"
+                      )
+                    }
+                    checked={
+                      this.props.athleticConference ===
+                      "Southern California Football Association (SCFA)"
+                    }
                   />
                   <label className="form-check-label" htmlFor="scfa">
                     Southern California Football Association (SCFA)

@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 
 class StepOne extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      gender: "",
+    };
+  }
+  setGender = (x) => {
+    this.setState({ gender: x });
+  };
   render() {
     if (this.props.currentStep !== 1) {
       return null;
@@ -70,7 +79,8 @@ class StepOne extends Component {
                   name="gender"
                   id="male"
                   value="male"
-                  seleted={this.props.gender}
+                  onChange={() => this.setGender("male")}
+                  checked={this.props.gender === "male"}
                 />
                 <label className="form-check-label" htmlFor="male">
                   Male
@@ -83,7 +93,8 @@ class StepOne extends Component {
                   name="gender"
                   id="female"
                   value="female"
-                  seletedg
+                  onChange={() => this.setGender("female")}
+                  checked={this.props.gender === "female"}
                 />
                 <label className="form-check-label" htmlFor="female">
                   Female
@@ -147,7 +158,7 @@ class StepOne extends Component {
             type="date"
             id="dob"
             name="dob"
-            // value={this.props.formDescription}
+            value={this.props.dob}
             onChange={this.props.handleChange}
             placeholder="Month, Day, Year"
           />

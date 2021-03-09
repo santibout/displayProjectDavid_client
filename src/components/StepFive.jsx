@@ -4,16 +4,16 @@ class StepFive extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      anotherCollege: false,
+      anotherCollege: "",
     };
   }
 
   toggleAnotherCollegeOn = () => {
-    this.setState({ anotherCollege: true });
+    this.setState({ anotherCollege: "true" });
   };
 
   toggleAnotherCollegeOff = () => {
-    this.setState({ anotherCollege: false });
+    this.setState({ anotherCollege: "false" });
   };
 
   render() {
@@ -42,7 +42,7 @@ class StepFive extends Component {
 
             <div className="mb-3">
               <label htmlFor="secondCollegeName" className="form-label">
-                2nd College Name
+                What Is The Name Of College 2
               </label>
               <input
                 className="form-control"
@@ -80,6 +80,11 @@ class StepFive extends Component {
               >
                 2nd College STOP Month And Year
               </label>
+              <p>
+                <small>
+                  IE: December 2019 or if you are still attending put "Present"
+                </small>
+              </p>
               <input
                 className="form-control"
                 type="text"
@@ -101,12 +106,13 @@ class StepFive extends Component {
               >
                 <div className="form-check">
                   <input
-                    onClick={this.toggleAnotherCollegeOn}
+                    onChange={this.toggleAnotherCollegeOn}
                     className="form-check-input"
                     type="radio"
                     name="hasAttendedAnotherCollege2"
                     id="yes"
                     value="Yes"
+                    checked={this.state.anotherCollege === 'true'}
                   />
                   <label className="form-check-label" htmlFor="yes">
                     Yes
@@ -114,12 +120,13 @@ class StepFive extends Component {
                 </div>
                 <div className="form-check">
                   <input
-                    onClick={this.toggleAnotherCollegeOff}
+                    onChange={this.toggleAnotherCollegeOff}
                     className="form-check-input"
                     type="radio"
                     name="hasAttendedAnotherCollege2"
                     id="no"
                     value="No"
+                    checked={this.state.anotherCollege === 'false'}
                   />
                   <label className="form-check-label" htmlFor="no">
                     No
@@ -127,7 +134,7 @@ class StepFive extends Component {
                 </div>
               </div>
             </div>
-            {this.state.anotherCollege ? (
+            {this.state.anotherCollege === 'true' ? (
               <p>Go To Section 6 (3rd College Attended) </p>
             ) : (
               <p>Go To Section 9 (Any Additional Time After High School)</p>
