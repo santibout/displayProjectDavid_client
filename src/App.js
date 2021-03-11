@@ -156,7 +156,7 @@ class App extends Component {
       // Step 26
       studentEligibility: "",
       signature: "",
-      data: []
+      data: [],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -165,12 +165,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(`https://project-david.herokuapp.com/api/`)
-    .then(res => {
+    axios.get(`https://project-david.herokuapp.com/api`).then((res) => {
       const gotData = res.data;
-      console.log('got data: ', gotData);
-      this.setState({data: [...gotData]});
-    })
+      console.log("got data: ", gotData);
+      this.setState({ data: [...gotData] });
+    });
   }
 
   _next() {
@@ -453,15 +452,24 @@ class App extends Component {
   getData = () => {
     this.setState({ currentStep: "getData" });
   };
+  backToForm = () => {
+    this.setState({ currentStep: 1 });
+  };
 
   render() {
     return (
       <div className="App">
         <img className="cccaImg" src={cccaaImg} alt="CCCAA Image" />
         <div className="form-container">
-          <button onClick={this.getData} className="btn btn-primary">
-            Display Data
-          </button>
+          {this.state.currentStep !== "getData" ? (
+            <button onClick={this.getData} className="btn btn-primary">
+              Display Data
+            </button>
+          ) : (
+            <button onClick={this.backToForm} className="btn btn-primary">
+              Back To Form
+            </button>
+          )}
           <form onSubmit={this.handleSubmit}>
             <GetData
               currentStep={this.state.currentStep}
