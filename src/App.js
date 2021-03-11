@@ -28,13 +28,17 @@ import StepTwentyFour from "./components/StepTwentyFour";
 import StepTwentyFive from "./components/StepTwentyFive";
 import StepTwentySix from "./components/StepTwentySix";
 
-import cccaaImg from "./static/cccaa.png";
+import axios from "axios";
 
+import cccaaImg from "./static/cccaa.png";
+// Use postmark to send email
+// then save to google docs
+//  look into google sheets api
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentStep: 6,
+      currentStep: 1,
       lastStep: 26,
       // Step 1
       formDescription: "",
@@ -278,122 +282,129 @@ class App extends Component {
       studentEligibility,
       signature,
     } = this.state;
-    console.log(`Your registration detail: \n 
-    Form Description: ${formDescription} \n 
-    Curent Date: ${currentDate} \n
-    Full Name: ${fullName} \n
-    Gender: ${gender} \n
-    Street Address: ${streetAddress} \n
-    City, State, ZIP: ${cityStateZip} \n
-    Phone Number: ${phoneNumber} \n
-    DOB: ${dob} \n
-    Student ID: ${studentId}
-      \n \n
-    Current Community College Info: ${communityCollegeInfo} \n
-    Community College: ${communityCollege} \n
-    Sport: ${sport} \n
-    Athletic Conference: ${athleticConference}
-      \n \n
-    highSchoolInfo: ${highSchoolInfo} \n
-    highSchool: ${highSchool} \n
-    highSchoolCityState: ${highSchoolCityState} \n
-    highSchoolMonthYearGraduation: ${highSchoolMonthYearGraduation} \n
-      \n \n
-    accountForTimesAfterHS: ${accountForTimesAfterHS} \n
-    previousCommunityCollege: ${previousCommunityCollege} \n
-    previousCommunityCollegeStartMonthYear: ${previousCommunityCollegeStartMonthYear} \n
-    hasAttendedAnotherCollege: ${hasAttendedAnotherCollege} \n
-      \n \n
-    secondCollegeAttended: ${secondCollegeAttended} \n
-    secondCollegeName: ${secondCollegeName} \n
-    secondCollegeStartMonthYear: ${secondCollegeStartMonthYear} \n
-    secondCollegeStopMonthYear: ${secondCollegeStopMonthYear} \n
-    hasAttendedAnotherCollege2: ${hasAttendedAnotherCollege2} \n
-      \n \n
-    thirdCollegeAttendedDescription: ${thirdCollegeAttendedDescription} \n
-    thirdCollegeName: ${thirdCollegeName} \n
-    thirdCollegeStartMonthYear: ${thirdCollegeStartMonthYear} \n
-    thirdCollegeStopMonthYear: ${thirdCollegeStopMonthYear} \n
-    hasAttendedAnotherCollege3: ${hasAttendedAnotherCollege3} \n
-      \n \n
-    fourthCollegeAttendedDescription: ${fourthCollegeAttendedDescription} \n
-    fourthCollegeName: ${fourthCollegeName} \n
-    fourthCollegeStartMonthYear: ${fourthCollegeStartMonthYear} \n
-    fourthCollegeStopMonthYear: ${fourthCollegeStopMonthYear} \n
-    hasAttendedAnotherCollege3: ${hasAttendedAnotherCollege4} \n
-      \n \n
-    anyAdditionalTimeAfterHS: ${anyAdditionalTimeAfterHS} \n
-    takenTimeOffSchool: ${takenTimeOffSchool} \n
-      \n \n
-    laspseOfTimeIn: ${laspseOfTimeIn} \n
-    timeOffOfSchoolReason: ${timeOffOfSchoolReason}\n
-      \n \n
-    employed: ${employed} \n
-    employerCityState: ${employerCityState} \n
-    employmentDate: ${employmentDate} \n
-      \n \n
-    unemployed: ${unemployed} \n
-    unemploymentDate: ${unemploymentDate} \n
-      \n \n
-    armedForces: ${armedForces} \n 
-    armedForcesDate: ${armedForcesDate} \n
-      \n \n
-    other: ${other} \n
-    otherDescription: ${otherDescription} \n
-    otherDate: ${otherDate} \n
-      \n \n
-    laspseOfTimeIn2: ${laspseOfTimeIn2} \n
-    laspseOfTimeIn2Option: ${laspseOfTimeIn2Option} \n
-      \n \n
-    employed2: ${employed2} \n
-    employerCitySate2: ${employerCityState2} \n
-    employmentDate2: ${employmentDate2} \n
-      \n \n
-    unemployed2: ${unemployed2} \n
-    unemployedDate2: ${unemployedDate2} \n
-      \n \n
-    armedForces2: ${armedForces2} \n
-    armedForcesDate2: ${armedForcesDate2} \n
-      \n \n
-    other2: ${other2} \n
-    otherDescription2: ${otherDescription2} \n
-    otherDate2: ${otherDate2} \n
-      \n \n
-    sportDescription2: ${sportDescription2} \n
-    sport2: ${sport2} \n
-      \n \n
-    collegeAthleticParticipation: ${collegeAthleticParticipation} \n
-    everPlayedOnAnAthleticTeamInCollege: ${everPlayedOnAthleticTeamInCollege} \n
-      \n \n
-    secondSportDescription: ${secondSportDescription} \n
-    secondSport: ${secondSport} \n
-    whichCollege: ${whichCollege} \n
-    sportLevel: ${sportLevel} \n
-    semester: ${semester} \n
-    competitionYear: ${competitionYear} \n
-    anotherSport: ${anotherSport} \n
-      \n \n
-    sportDescription3: ${sportDescription3} \n
-    sport3: ${sport3} \n
-    sport3College: ${sport3College} \n
-    sportLevel3: ${sportLevel3} \n
-    sport3Semester: ${sport3Semester} \n
-    sport3Year: ${sport3Year} \n
-    anotherSport3: ${anotherSport3}
-      \n \n
-    sportDescription4: ${sportDescription4} \n
-    sport4: ${sport4} \n
-    sport4College: ${sport4College} \n
-    sportLevel4: ${sportLevel4} \n
-    sport4Semester: ${sport4Semester} \n
-    sport4Year: ${sport4Year} \n
-      \n \n
-    authorize: ${authorize} \n
-    initials: ${initials} \n
-      \n \n
-    studentEligibility: ${studentEligibility} \n
-    signature: ${signature} 
-    `);
+
+    axios
+      .post("https://project-david.herokuapp.com/api/post", this.state)
+      // .post("/api/post", this.state)
+      .then((r) => console.log("r: ", r))
+      .catch((err) => console.log("err: ", err));
+
+    // console.log(`Your registration detail: \n
+    // Form Description: ${formDescription} \n
+    // Curent Date: ${currentDate} \n
+    // Full Name: ${fullName} \n
+    // Gender: ${gender} \n
+    // Street Address: ${streetAddress} \n
+    // City, State, ZIP: ${cityStateZip} \n
+    // Phone Number: ${phoneNumber} \n
+    // DOB: ${dob} \n
+    // Student ID: ${studentId}
+    //   \n \n
+    // Current Community College Info: ${communityCollegeInfo} \n
+    // Community College: ${communityCollege} \n
+    // Sport: ${sport} \n
+    // Athletic Conference: ${athleticConference}
+    //   \n \n
+    // highSchoolInfo: ${highSchoolInfo} \n
+    // highSchool: ${highSchool} \n
+    // highSchoolCityState: ${highSchoolCityState} \n
+    // highSchoolMonthYearGraduation: ${highSchoolMonthYearGraduation} \n
+    //   \n \n
+    // accountForTimesAfterHS: ${accountForTimesAfterHS} \n
+    // previousCommunityCollege: ${previousCommunityCollege} \n
+    // previousCommunityCollegeStartMonthYear: ${previousCommunityCollegeStartMonthYear} \n
+    // hasAttendedAnotherCollege: ${hasAttendedAnotherCollege} \n
+    //   \n \n
+    // secondCollegeAttended: ${secondCollegeAttended} \n
+    // secondCollegeName: ${secondCollegeName} \n
+    // secondCollegeStartMonthYear: ${secondCollegeStartMonthYear} \n
+    // secondCollegeStopMonthYear: ${secondCollegeStopMonthYear} \n
+    // hasAttendedAnotherCollege2: ${hasAttendedAnotherCollege2} \n
+    //   \n \n
+    // thirdCollegeAttendedDescription: ${thirdCollegeAttendedDescription} \n
+    // thirdCollegeName: ${thirdCollegeName} \n
+    // thirdCollegeStartMonthYear: ${thirdCollegeStartMonthYear} \n
+    // thirdCollegeStopMonthYear: ${thirdCollegeStopMonthYear} \n
+    // hasAttendedAnotherCollege3: ${hasAttendedAnotherCollege3} \n
+    //   \n \n
+    // fourthCollegeAttendedDescription: ${fourthCollegeAttendedDescription} \n
+    // fourthCollegeName: ${fourthCollegeName} \n
+    // fourthCollegeStartMonthYear: ${fourthCollegeStartMonthYear} \n
+    // fourthCollegeStopMonthYear: ${fourthCollegeStopMonthYear} \n
+    // hasAttendedAnotherCollege3: ${hasAttendedAnotherCollege4} \n
+    //   \n \n
+    // anyAdditionalTimeAfterHS: ${anyAdditionalTimeAfterHS} \n
+    // takenTimeOffSchool: ${takenTimeOffSchool} \n
+    //   \n \n
+    // laspseOfTimeIn: ${laspseOfTimeIn} \n
+    // timeOffOfSchoolReason: ${timeOffOfSchoolReason}\n
+    //   \n \n
+    // employed: ${employed} \n
+    // employerCityState: ${employerCityState} \n
+    // employmentDate: ${employmentDate} \n
+    //   \n \n
+    // unemployed: ${unemployed} \n
+    // unemploymentDate: ${unemploymentDate} \n
+    //   \n \n
+    // armedForces: ${armedForces} \n
+    // armedForcesDate: ${armedForcesDate} \n
+    //   \n \n
+    // other: ${other} \n
+    // otherDescription: ${otherDescription} \n
+    // otherDate: ${otherDate} \n
+    //   \n \n
+    // laspseOfTimeIn2: ${laspseOfTimeIn2} \n
+    // laspseOfTimeIn2Option: ${laspseOfTimeIn2Option} \n
+    //   \n \n
+    // employed2: ${employed2} \n
+    // employerCitySate2: ${employerCityState2} \n
+    // employmentDate2: ${employmentDate2} \n
+    //   \n \n
+    // unemployed2: ${unemployed2} \n
+    // unemployedDate2: ${unemployedDate2} \n
+    //   \n \n
+    // armedForces2: ${armedForces2} \n
+    // armedForcesDate2: ${armedForcesDate2} \n
+    //   \n \n
+    // other2: ${other2} \n
+    // otherDescription2: ${otherDescription2} \n
+    // otherDate2: ${otherDate2} \n
+    //   \n \n
+    // sportDescription2: ${sportDescription2} \n
+    // sport2: ${sport2} \n
+    //   \n \n
+    // collegeAthleticParticipation: ${collegeAthleticParticipation} \n
+    // everPlayedOnAnAthleticTeamInCollege: ${everPlayedOnAthleticTeamInCollege} \n
+    //   \n \n
+    // secondSportDescription: ${secondSportDescription} \n
+    // secondSport: ${secondSport} \n
+    // whichCollege: ${whichCollege} \n
+    // sportLevel: ${sportLevel} \n
+    // semester: ${semester} \n
+    // competitionYear: ${competitionYear} \n
+    // anotherSport: ${anotherSport} \n
+    //   \n \n
+    // sportDescription3: ${sportDescription3} \n
+    // sport3: ${sport3} \n
+    // sport3College: ${sport3College} \n
+    // sportLevel3: ${sportLevel3} \n
+    // sport3Semester: ${sport3Semester} \n
+    // sport3Year: ${sport3Year} \n
+    // anotherSport3: ${anotherSport3}
+    //   \n \n
+    // sportDescription4: ${sportDescription4} \n
+    // sport4: ${sport4} \n
+    // sport4College: ${sport4College} \n
+    // sportLevel4: ${sportLevel4} \n
+    // sport4Semester: ${sport4Semester} \n
+    // sport4Year: ${sport4Year} \n
+    //   \n \n
+    // authorize: ${authorize} \n
+    // initials: ${initials} \n
+    //   \n \n
+    // studentEligibility: ${studentEligibility} \n
+    // signature: ${signature}
+    // `);
   };
 
   get previousButton() {
@@ -461,7 +472,9 @@ class App extends Component {
               highSchoolInfo={this.state.highSchoolInfo}
               highSchool={this.state.highSchool}
               highSchoolCityState={this.state.highSchoolCityState}
-              highSchoolMonthYearGraduation={this.state.highSchoolMonthYearGraduation}
+              highSchoolMonthYearGraduation={
+                this.state.highSchoolMonthYearGraduation
+              }
             />
             <StepFour
               currentStep={this.state.currentStep}
@@ -479,14 +492,18 @@ class App extends Component {
               handleChange={this.handleChange}
               secondCollegeAttended={this.state.secondCollegeAttended}
               secondCollegeName={this.state.secondCollegeName}
-              secondCollegeStartMonthYear={this.state.secondCollegeStartMonthYear}
+              secondCollegeStartMonthYear={
+                this.state.secondCollegeStartMonthYear
+              }
               secondCollegeStopMonthYear={this.state.secondCollegeStopMonthYear}
               hasAttendedAnotherCollege2={this.state.hasAttendedAnotherCollege2}
             />
             <StepSix
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              thirdCollegeAttendedDescription={this.state.thirdCollegeAttendedDescription}
+              thirdCollegeAttendedDescription={
+                this.state.thirdCollegeAttendedDescription
+              }
               thirdCollegeName={this.state.thirdCollegeName}
               thirdCollegeStartMonthYear={this.state.thirdCollegeStartMonthYear}
               thirdCollegeStopMonthYear={this.state.thirdCollegeStopMonthYear}
@@ -495,9 +512,13 @@ class App extends Component {
             <StepSeven
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              fourthCollegeAttendedDescription={this.state.fourthCollegeAttendedDescription}
+              fourthCollegeAttendedDescription={
+                this.state.fourthCollegeAttendedDescription
+              }
               fourthCollegeName={this.state.fourthCollegeName}
-              fourthCollegeStartMonthYear={this.state.fourthCollegeStartMonthYear}
+              fourthCollegeStartMonthYear={
+                this.state.fourthCollegeStartMonthYear
+              }
               fourthCollegeStopMonthYear={this.state.fourthCollegeStopMonthYear}
               hasAttendedAnotherCollege4={this.state.hasAttendedAnotherCollege4}
             />
@@ -522,7 +543,7 @@ class App extends Component {
               handleSubmit={this.handleSubmit}
               employed={this.state.employed}
               employerCityState={this.state.employerCityState}
-              employmentDate={this.employmentDate}
+              employmentDate={this.state.employmentDate}
             />
             <StepTwelve
               currentStep={this.state.currentStep}
@@ -535,31 +556,31 @@ class App extends Component {
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              armedForces={this.armedForces}
-              armedForcesDate={this.armedForcesDate}
+              armedForces={this.statearmedForces}
+              armedForcesDate={this.statearmedForcesDate}
             />
             <StepFourteen
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              other={this.other}
-              otherDescription={this.otherDescription}
-              otherDate={this.otherDate}
+              other={this.state.other}
+              otherDescription={this.state.otherDescription}
+              otherDate={this.state.otherDate}
             />
             <StepFifteen
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              laspseOfTimeIn2={this.laspseOfTimeIn2}
-              laspseOfTimeIn2Option={this.laspseOfTimeIn2Option}
+              laspseOfTimeIn2={this.state.laspseOfTimeIn2}
+              laspseOfTimeIn2Option={this.state.laspseOfTimeIn2Option}
             />
             <StepSixteen
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              employed2={this.employed2}
-              employerCityState2={this.employerCityState2}
-              employmentDate2={this.employmentDate2}
+              employed2={this.state.employed2}
+              employerCityState2={this.state.employerCityState2}
+              employmentDate2={this.state.employmentDate2}
             />
             <StepSeventeen
               currentStep={this.state.currentStep}
@@ -572,84 +593,86 @@ class App extends Component {
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              armedForces2={this.armedForces2}
-              armedForcesDate2={this.armedForcesDate2}
+              armedForces2={this.state.armedForces2}
+              armedForcesDate2={this.state.armedForcesDate2}
             />
             <StepNineteen
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              other2={this.other2}
-              otherDescription2={this.otherDescription2}
-              otherDate={this.otherDate2}
+              other2={this.state.other2}
+              otherDescription2={this.state.otherDescription2}
+              otherDate={this.state.otherDate2}
             />
             <StepTwenty
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              sportDescription2={this.sportDescription2}
-              sport2={this.sport2}
+              sportDescription2={this.state.sportDescription2}
+              sport2={this.state.sport2}
             />
             <StepTwentyOne
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              collegeAthleticParticipation={this.collegeAthleticParticipation}
+              collegeAthleticParticipation={
+                this.state.collegeAthleticParticipation
+              }
               everPlayedOnAthleticTeamInCollege={
-                this.everPlayedOnAthleticTeamInCollege
+                this.state.everPlayedOnAthleticTeamInCollege
               }
             />
             <StepTwentyTwo
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              secondSportDescription={this.secondSportDescription}
-              secondSport={this.secondSport}
-              whichCollege={this.secondSport}
-              sportLevel={this.sportLevel}
-              semester={this.semester}
-              competitionYear={this.competitionYear}
-              anotherSport={this.anotherSport}
+              secondSportDescription={this.state.secondSportDescription}
+              secondSport={this.state.secondSport}
+              whichCollege={this.state.whichCollege}
+              sportLevel={this.state.sportLevel}
+              semester={this.state.semester}
+              competitionYear={this.state.competitionYear}
+              anotherSport={this.state.anotherSport}
             />
             <StepTwentyThree
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              sportDescription3={this.sportDescription3}
-              sport3={this.sport3}
-              sport3College={this.sport3College}
-              sport3Year={this.sport3Year}
-              sportLevel3={this.sportLevel3}
-              sport3Semester={this.sport3Semester}
-              sport3Year={this.sport3Year}
-              anotherSport3={this.anotherSport3}
+              sportDescription3={this.state.sportDescription3}
+              sport3={this.state.sport3}
+              sport3College={this.state.sport3College}
+              sport3Year={this.state.sport3Year}
+              sportLevel3={this.state.sportLevel3}
+              sport3Semester={this.state.sport3Semester}
+              sport3Year={this.state.sport3Year}
+              anotherSport3={this.state.anotherSport3}
             />
             <StepTwentyFour
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              sportDescription4={this.sportDescription4}
-              sport4={this.sport4}
-              sport4College={this.sport4College}
-              sport4Year={this.sport4Year}
-              sportLevel4={this.sportLevel4}
-              sport4Semester={this.sport4Semester}
-              sport4Year={this.sport4Year}
-              anotherSport4={this.anotherSport4}
+              sportDescription4={this.state.sportDescription4}
+              sport4={this.state.sport4}
+              sport4College={this.state.sport4College}
+              sport4Year={this.state.sport4Year}
+              sportLevel4={this.state.sportLevel4}
+              sport4Semester={this.state.sport4Semester}
+              sport4Year={this.state.sport4Year}
+              anotherSport4={this.state.anotherSport4}
             />
             <StepTwentyFive
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              authorize={this.authorize}
-              initials={this.initials}
+              authorize={this.state.authorize}
+              initials={this.state.initials}
             />
             <StepTwentySix
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              studentEligibility={this.studentEligibility}
-              signature={this.signature}
+              studentEligibility={this.state.studentEligibility}
+              signature={this.state.signature}
             />
           </form>
           <div className="left-right-btns">

@@ -16,7 +16,7 @@ class StepTwelve extends Component {
           <div className="col-md">
             <div className="mb-3">
               <label htmlFor="unemployed" className="form-label">
-                Description (optional)
+                Unemployed
               </label>
               <input
                 className="form-control"
@@ -31,7 +31,15 @@ class StepTwelve extends Component {
 
             <div className="mb-3">
               <label htmlFor="unemploymentDate" className="form-label">
-                NEED MONTH AND YEAR For example: June 2019 TO Dec 2019
+                If you were unemployed we need to account for the time in which
+                you did not attend any post high school education and you do not
+                have any record of having employment.
+                <br/>
+                <p>
+                  <small>
+                    NEED MONTH AND YEAR For example: June 2019 TO Dec 2019
+                  </small>
+                </p>
               </label>
               <input
                 className="form-control"
@@ -43,7 +51,6 @@ class StepTwelve extends Component {
                 placeholder="NEED MONTH AND YEAR   For example:  June 2019   TO    Dec 2019"
               />
             </div>
-
           </div>
         </div>
         <p>

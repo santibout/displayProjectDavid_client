@@ -16,7 +16,7 @@ class StepThirteen extends Component {
           <div className="col-md">
             <div className="mb-3">
               <label htmlFor="armedForces" className="form-label">
-                Description (optional)
+                Armed Forces
               </label>
               <input
                 className="form-control"
@@ -31,7 +31,9 @@ class StepThirteen extends Component {
 
             <div className="mb-3">
               <label htmlFor="armedForcesDate" className="form-label">
-                Description (optional)
+                If you were in a branch of the Armed Forces we need to account
+                for the time in which you did not attend any post high school
+                education and you do not have any record of having employment.
               </label>
               <input
                 className="form-control"

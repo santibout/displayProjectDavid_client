@@ -16,7 +16,7 @@ class StepFourteen extends Component {
           <div className="col-md">
             <div className="mb-3">
               <label htmlFor="other" className="form-label">
-                Description (optional)
+                Other
               </label>
               <input
                 className="form-control"

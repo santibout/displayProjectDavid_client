@@ -16,7 +16,7 @@ class StepEleven extends Component {
           <div className="col-md">
             <div className="mb-3">
               <label htmlFor="employed" className="form-label">
-                Description (optional)
+                Employed
               </label>
               <input
                 className="form-control"
