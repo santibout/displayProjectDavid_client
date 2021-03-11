@@ -27,6 +27,7 @@ import StepTwentyThree from "./components/StepTwentyThree";
 import StepTwentyFour from "./components/StepTwentyFour";
 import StepTwentyFive from "./components/StepTwentyFive";
 import StepTwentySix from "./components/StepTwentySix";
+import GetData from "./components/GetData";
 
 import axios from "axios";
 
@@ -155,11 +156,21 @@ class App extends Component {
       // Step 26
       studentEligibility: "",
       signature: "",
+      data: []
     };
 
     this.handleChange = this.handleChange.bind(this);
     this._next = this._next.bind(this);
     this._prev = this._prev.bind(this);
+  }
+
+  componentDidMount() {
+    axios.get(`https://project-david.herokuapp.com/api/`)
+    .then(res => {
+      const gotData = res.data;
+      console.log('got data: ', gotData);
+      this.setState({data: [...gotData]});
+    })
   }
 
   _next() {
@@ -439,12 +450,23 @@ class App extends Component {
     return null;
   }
 
+  getData = () => {
+    this.setState({ currentStep: "getData" });
+  };
+
   render() {
     return (
       <div className="App">
         <img className="cccaImg" src={cccaaImg} alt="CCCAA Image" />
         <div className="form-container">
+          <button onClick={this.getData} className="btn btn-primary">
+            Display Data
+          </button>
           <form onSubmit={this.handleSubmit}>
+            <GetData
+              currentStep={this.state.currentStep}
+              data={this.state.data}
+            />
             <StepOne
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
