@@ -288,12 +288,12 @@ class App extends Component {
     console.log(this.state);
     axios
       // .post("https://project-david.herokuapp.com/api/post", this.state)
-      .post(" https://project-david.herokuapp.com/api/post", this.state)
+      .post(" http://localhost:3201/api/post", this.state)
       .then((r) => {
-        // axios
-        //   .get("http://localhost:3201/fetch-pdf")
-        //   .then((r) => alert("this cb function done"))
-        //   .catch((err) => console.log("Error: ", err));
+        axios
+          .get("http://localhost:3201/fetch-pdf")
+          .then((r) => alert("this cb function done"))
+          .catch((err) => console.log("Error: ", err));
         console.log(r);
       })
       .catch((err) => console.log("err: ", err));
