@@ -65,6 +65,8 @@ class App extends Component {
       accountForTimesAfterHS: "",
       previousCommunityCollege: "",
       previousCommunityCollegeStartMonthYear: "",
+      previousCommunityCollegeStartMonth: "",
+      previousCommunityCollegeStartYear: "",
       hasAttendedAnotherCollege: "",
       // Step 5
       secondCollegeAttended: "",
@@ -156,20 +158,11 @@ class App extends Component {
       // Step 26
       studentEligibility: "",
       signature: "",
-      data: [],
     };
 
     this.handleChange = this.handleChange.bind(this);
     this._next = this._next.bind(this);
     this._prev = this._prev.bind(this);
-  }
-
-  componentDidMount() {
-    axios.get(`https://project-david.herokuapp.com/api`).then((res) => {
-      const gotData = res.data;
-      console.log("got data: ", gotData);
-      this.setState({ data: [...gotData] });
-    });
   }
 
   _next() {
@@ -200,7 +193,7 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const {
+    const data =  {
       formDescription,
       currentDate,
       fullName,
@@ -292,11 +285,17 @@ class App extends Component {
       studentEligibility,
       signature,
     } = this.state;
-
+    console.log(this.state);
     axios
-      .post("https://project-david.herokuapp.com/api/post", this.state)
-      // .post("/api/post", this.state)
-      .then((r) => console.log("r: ", r))
+      // .post("https://project-david.herokuapp.com/api/post", this.state)
+      .post("http://localhost:3201/api/post", data)
+      .then((r) => {
+        // axios
+        //   .get("http://localhost:3201/fetch-pdf")
+        //   .then((r) => alert("this cb function done"))
+        //   .catch((err) => console.log("Error: ", err));
+        console.log(r);
+      })
       .catch((err) => console.log("err: ", err));
 
     // console.log(`Your registration detail: \n
@@ -471,10 +470,7 @@ class App extends Component {
             </button>
           )}
           <form onSubmit={this.handleSubmit}>
-            <GetData
-              currentStep={this.state.currentStep}
-              data={this.state.data}
-            />
+            <GetData currentStep={this.state.currentStep} />
             <StepOne
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}

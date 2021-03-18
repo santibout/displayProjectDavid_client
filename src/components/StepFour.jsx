@@ -57,19 +57,37 @@ class StepFour extends Component {
 
             <div className="mb-3">
               <label
-                htmlFor="previousCommunityCollegeStartMonthYear"
+                htmlFor="previousCommunityCollegeStartMonth"
                 className="form-label"
               >
-                What Is The Month And Year You Started At This College?
+                What Is The Month You Started At This College?
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="previousCommunityCollegeStartMonthYear"
-                name="previousCommunityCollegeStartMonthYear"
-                value={this.props.previousCommunityCollegeStartMonthYear}
+                id="previousCommunityCollegeStartMonth"
+                name="previousCommunityCollegeStartMonth"
+                value={this.props.previousCommunityCollegeStartMonth}
                 onChange={this.props.handleChange}
-                placeholder="example: August 2019"
+                placeholder="example: August"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label
+                htmlFor="previousCommunityCollegeStartYear"
+                className="form-label"
+              >
+                What Is The Year You Started At This College?
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                id="previousCommunityCollegeStartYear"
+                name="previousCommunityCollegeStartYear"
+                value={this.props.previousCommunityCollegeStartYear}
+                onChange={this.props.handleChange}
+                placeholder="example: 2019"
               />
             </div>
 
