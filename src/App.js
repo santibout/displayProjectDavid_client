@@ -287,133 +287,133 @@ class App extends Component {
     } = this.state;
     console.log(this.state);
     axios
-      .post("https://project-david.herokuapp.com/api/post", this.state)
-      // .post(" http://localhost:3201/api/post", this.state)
+      // .post("https://project-david.herokuapp.com/api/post", this.state)
+      .post(" http://localhost:3201/api/post", this.state)
       .then((r) => {
         axios
           .get("http://localhost:3201/fetch-pdf")
-          .then((r) => alert("this cb function done"))
+          .then((r) => console.log("msg from client...Got and displayed pdf file"))
           .catch((err) => console.log("Error: ", err));
         console.log(r);
       })
       .catch((err) => console.log("err: ", err));
 
-    // console.log(`Your registration detail: \n
-    // Form Description: ${formDescription} \n
-    // Curent Date: ${currentDate} \n
-    // Full Name: ${fullName} \n
-    // Gender: ${gender} \n
-    // Street Address: ${streetAddress} \n
-    // City, State, ZIP: ${cityStateZip} \n
-    // Phone Number: ${phoneNumber} \n
-    // DOB: ${dob} \n
-    // Student ID: ${studentId}
-    //   \n \n
-    // Current Community College Info: ${communityCollegeInfo} \n
-    // Community College: ${communityCollege} \n
-    // Sport: ${sport} \n
-    // Athletic Conference: ${athleticConference}
-    //   \n \n
-    // highSchoolInfo: ${highSchoolInfo} \n
-    // highSchool: ${highSchool} \n
-    // highSchoolCityState: ${highSchoolCityState} \n
-    // highSchoolMonthYearGraduation: ${highSchoolMonthYearGraduation} \n
-    //   \n \n
-    // accountForTimesAfterHS: ${accountForTimesAfterHS} \n
-    // previousCommunityCollege: ${previousCommunityCollege} \n
-    // previousCommunityCollegeStartMonthYear: ${previousCommunityCollegeStartMonthYear} \n
-    // hasAttendedAnotherCollege: ${hasAttendedAnotherCollege} \n
-    //   \n \n
-    // secondCollegeAttended: ${secondCollegeAttended} \n
-    // secondCollegeName: ${secondCollegeName} \n
-    // secondCollegeStartMonthYear: ${secondCollegeStartMonthYear} \n
-    // secondCollegeStopMonthYear: ${secondCollegeStopMonthYear} \n
-    // hasAttendedAnotherCollege2: ${hasAttendedAnotherCollege2} \n
-    //   \n \n
-    // thirdCollegeAttendedDescription: ${thirdCollegeAttendedDescription} \n
-    // thirdCollegeName: ${thirdCollegeName} \n
-    // thirdCollegeStartMonthYear: ${thirdCollegeStartMonthYear} \n
-    // thirdCollegeStopMonthYear: ${thirdCollegeStopMonthYear} \n
-    // hasAttendedAnotherCollege3: ${hasAttendedAnotherCollege3} \n
-    //   \n \n
-    // fourthCollegeAttendedDescription: ${fourthCollegeAttendedDescription} \n
-    // fourthCollegeName: ${fourthCollegeName} \n
-    // fourthCollegeStartMonthYear: ${fourthCollegeStartMonthYear} \n
-    // fourthCollegeStopMonthYear: ${fourthCollegeStopMonthYear} \n
-    // hasAttendedAnotherCollege3: ${hasAttendedAnotherCollege4} \n
-    //   \n \n
-    // anyAdditionalTimeAfterHS: ${anyAdditionalTimeAfterHS} \n
-    // takenTimeOffSchool: ${takenTimeOffSchool} \n
-    //   \n \n
-    // laspseOfTimeIn: ${laspseOfTimeIn} \n
-    // timeOffOfSchoolReason: ${timeOffOfSchoolReason}\n
-    //   \n \n
-    // employed: ${employed} \n
-    // employerCityState: ${employerCityState} \n
-    // employmentDate: ${employmentDate} \n
-    //   \n \n
-    // unemployed: ${unemployed} \n
-    // unemploymentDate: ${unemploymentDate} \n
-    //   \n \n
-    // armedForces: ${armedForces} \n
-    // armedForcesDate: ${armedForcesDate} \n
-    //   \n \n
-    // other: ${other} \n
-    // otherDescription: ${otherDescription} \n
-    // otherDate: ${otherDate} \n
-    //   \n \n
-    // laspseOfTimeIn2: ${laspseOfTimeIn2} \n
-    // laspseOfTimeIn2Option: ${laspseOfTimeIn2Option} \n
-    //   \n \n
-    // employed2: ${employed2} \n
-    // employerCitySate2: ${employerCityState2} \n
-    // employmentDate2: ${employmentDate2} \n
-    //   \n \n
-    // unemployed2: ${unemployed2} \n
-    // unemployedDate2: ${unemployedDate2} \n
-    //   \n \n
-    // armedForces2: ${armedForces2} \n
-    // armedForcesDate2: ${armedForcesDate2} \n
-    //   \n \n
-    // other2: ${other2} \n
-    // otherDescription2: ${otherDescription2} \n
-    // otherDate2: ${otherDate2} \n
-    //   \n \n
-    // sportDescription2: ${sportDescription2} \n
-    // sport2: ${sport2} \n
-    //   \n \n
-    // collegeAthleticParticipation: ${collegeAthleticParticipation} \n
-    // everPlayedOnAnAthleticTeamInCollege: ${everPlayedOnAthleticTeamInCollege} \n
-    //   \n \n
-    // secondSportDescription: ${secondSportDescription} \n
-    // secondSport: ${secondSport} \n
-    // whichCollege: ${whichCollege} \n
-    // sportLevel: ${sportLevel} \n
-    // semester: ${semester} \n
-    // competitionYear: ${competitionYear} \n
-    // anotherSport: ${anotherSport} \n
-    //   \n \n
-    // sportDescription3: ${sportDescription3} \n
-    // sport3: ${sport3} \n
-    // sport3College: ${sport3College} \n
-    // sportLevel3: ${sportLevel3} \n
-    // sport3Semester: ${sport3Semester} \n
-    // sport3Year: ${sport3Year} \n
-    // anotherSport3: ${anotherSport3}
-    //   \n \n
-    // sportDescription4: ${sportDescription4} \n
-    // sport4: ${sport4} \n
-    // sport4College: ${sport4College} \n
-    // sportLevel4: ${sportLevel4} \n
-    // sport4Semester: ${sport4Semester} \n
-    // sport4Year: ${sport4Year} \n
-    //   \n \n
-    // authorize: ${authorize} \n
-    // initials: ${initials} \n
-    //   \n \n
-    // studentEligibility: ${studentEligibility} \n
-    // signature: ${signature}
-    // `);
+    console.log(`Your registration detail: \n
+    Form Description: ${formDescription} \n
+    Curent Date: ${currentDate} \n
+    Full Name: ${fullName} \n
+    Gender: ${gender} \n
+    Street Address: ${streetAddress} \n
+    City, State, ZIP: ${cityStateZip} \n
+    Phone Number: ${phoneNumber} \n
+    DOB: ${dob} \n
+    Student ID: ${studentId}
+      \n \n
+    Current Community College Info: ${communityCollegeInfo} \n
+    Community College: ${communityCollege} \n
+    Sport: ${sport} \n
+    Athletic Conference: ${athleticConference}
+      \n \n
+    highSchoolInfo: ${highSchoolInfo} \n
+    highSchool: ${highSchool} \n
+    highSchoolCityState: ${highSchoolCityState} \n
+    highSchoolMonthYearGraduation: ${highSchoolMonthYearGraduation} \n
+      \n \n
+    accountForTimesAfterHS: ${accountForTimesAfterHS} \n
+    previousCommunityCollege: ${previousCommunityCollege} \n
+    previousCommunityCollegeStartMonthYear: ${previousCommunityCollegeStartMonthYear} \n
+    hasAttendedAnotherCollege: ${hasAttendedAnotherCollege} \n
+      \n \n
+    secondCollegeAttended: ${secondCollegeAttended} \n
+    secondCollegeName: ${secondCollegeName} \n
+    secondCollegeStartMonthYear: ${secondCollegeStartMonthYear} \n
+    secondCollegeStopMonthYear: ${secondCollegeStopMonthYear} \n
+    hasAttendedAnotherCollege2: ${hasAttendedAnotherCollege2} \n
+      \n \n
+    thirdCollegeAttendedDescription: ${thirdCollegeAttendedDescription} \n
+    thirdCollegeName: ${thirdCollegeName} \n
+    thirdCollegeStartMonthYear: ${thirdCollegeStartMonthYear} \n
+    thirdCollegeStopMonthYear: ${thirdCollegeStopMonthYear} \n
+    hasAttendedAnotherCollege3: ${hasAttendedAnotherCollege3} \n
+      \n \n
+    fourthCollegeAttendedDescription: ${fourthCollegeAttendedDescription} \n
+    fourthCollegeName: ${fourthCollegeName} \n
+    fourthCollegeStartMonthYear: ${fourthCollegeStartMonthYear} \n
+    fourthCollegeStopMonthYear: ${fourthCollegeStopMonthYear} \n
+    hasAttendedAnotherCollege3: ${hasAttendedAnotherCollege4} \n
+      \n \n
+    anyAdditionalTimeAfterHS: ${anyAdditionalTimeAfterHS} \n
+    takenTimeOffSchool: ${takenTimeOffSchool} \n
+      \n \n
+    laspseOfTimeIn: ${laspseOfTimeIn} \n
+    timeOffOfSchoolReason: ${timeOffOfSchoolReason}\n
+      \n \n
+    employed: ${employed} \n
+    employerCityState: ${employerCityState} \n
+    employmentDate: ${employmentDate} \n
+      \n \n
+    unemployed: ${unemployed} \n
+    unemploymentDate: ${unemploymentDate} \n
+      \n \n
+    armedForces: ${armedForces} \n
+    armedForcesDate: ${armedForcesDate} \n
+      \n \n
+    other: ${other} \n
+    otherDescription: ${otherDescription} \n
+    otherDate: ${otherDate} \n
+      \n \n
+    laspseOfTimeIn2: ${laspseOfTimeIn2} \n
+    laspseOfTimeIn2Option: ${laspseOfTimeIn2Option} \n
+      \n \n
+    employed2: ${employed2} \n
+    employerCitySate2: ${employerCityState2} \n
+    employmentDate2: ${employmentDate2} \n
+      \n \n
+    unemployed2: ${unemployed2} \n
+    unemployedDate2: ${unemployedDate2} \n
+      \n \n
+    armedForces2: ${armedForces2} \n
+    armedForcesDate2: ${armedForcesDate2} \n
+      \n \n
+    other2: ${other2} \n
+    otherDescription2: ${otherDescription2} \n
+    otherDate2: ${otherDate2} \n
+      \n \n
+    sportDescription2: ${sportDescription2} \n
+    sport2: ${sport2} \n
+      \n \n
+    collegeAthleticParticipation: ${collegeAthleticParticipation} \n
+    everPlayedOnAnAthleticTeamInCollege: ${everPlayedOnAthleticTeamInCollege} \n
+      \n \n
+    secondSportDescription: ${secondSportDescription} \n
+    secondSport: ${secondSport} \n
+    whichCollege: ${whichCollege} \n
+    sportLevel: ${sportLevel} \n
+    semester: ${semester} \n
+    competitionYear: ${competitionYear} \n
+    anotherSport: ${anotherSport} \n
+      \n \n
+    sportDescription3: ${sportDescription3} \n
+    sport3: ${sport3} \n
+    sport3College: ${sport3College} \n
+    sportLevel3: ${sportLevel3} \n
+    sport3Semester: ${sport3Semester} \n
+    sport3Year: ${sport3Year} \n
+    anotherSport3: ${anotherSport3}
+      \n \n
+    sportDescription4: ${sportDescription4} \n
+    sport4: ${sport4} \n
+    sport4College: ${sport4College} \n
+    sportLevel4: ${sportLevel4} \n
+    sport4Semester: ${sport4Semester} \n
+    sport4Year: ${sport4Year} \n
+      \n \n
+    authorize: ${authorize} \n
+    initials: ${initials} \n
+      \n \n
+    studentEligibility: ${studentEligibility} \n
+    signature: ${signature}
+    `);
   };
 
   get previousButton() {
