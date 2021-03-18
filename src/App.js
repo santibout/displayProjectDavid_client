@@ -291,7 +291,7 @@ class App extends Component {
       // .post(" http://localhost:3201/api/post", this.state)
       .then((r) => {
         axios
-          .get("http://localhost:3201/fetch-pdf")
+          .get("https://project-david.herokuapp.com/fetch-pdf")
           .then((r) => console.log("msg from client...Got and displayed pdf file"))
           .catch((err) => console.log("Error: ", err));
         console.log(r);
