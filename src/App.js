@@ -193,7 +193,7 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const data =  {
+    const {
       formDescription,
       currentDate,
       fullName,
@@ -288,7 +288,7 @@ class App extends Component {
     console.log(this.state);
     axios
       // .post("https://project-david.herokuapp.com/api/post", this.state)
-      .post("http://localhost:3201/api/post", data)
+      .post(" https://project-david.herokuapp.com/api/post", this.state)
       .then((r) => {
         // axios
         //   .get("http://localhost:3201/fetch-pdf")
