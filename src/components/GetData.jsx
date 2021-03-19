@@ -10,7 +10,7 @@ class StepOne extends Component {
   }
 
   componentDidMount() {
-    axios.get(`https://project-david.herokuapp.com/api`).then((res) => {
+    axios.get(`http://localhost:3201/api`).then((res) => {
       const gotData = res.data;
       console.log("got data: ", gotData);
       this.setState({ data: [...gotData] });
