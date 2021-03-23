@@ -286,8 +286,8 @@ class App extends Component {
       signature,
     } = this.state;
     axios
-      // .post("https://project-david.herokuapp.com/api/post", this.state)
-      .post(" http://localhost:3201/api/post", this.state)
+      .post("https://project-david.herokuapp.com/api/post", this.state)
+      // .post(" http://localhost:3201/api/post", this.state)
       .then((r) => {
         console.log("r: ", r);
       })
