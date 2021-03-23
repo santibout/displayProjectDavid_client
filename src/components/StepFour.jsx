@@ -4,16 +4,16 @@ class StepFour extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      anotherCollege: '',
+      anotherCollege: "",
     };
   }
 
   toggleAnotherCollegeOn = () => {
-    this.setState({ anotherCollege: 'true' });
+    this.setState({ anotherCollege: "true" });
   };
 
   toggleAnotherCollegeOff = () => {
-    this.setState({ anotherCollege: 'false' });
+    this.setState({ anotherCollege: "false" });
   };
 
   render() {
@@ -107,7 +107,10 @@ class StepFour extends Component {
                     name="hasAttendedAnotherCollege"
                     id="yes"
                     value="Yes"
-                    checked={this.state.anotherCollege === 'true'}
+                    checked={
+                      this.state.anotherCollege === "true" ||
+                      this.props.hasAttendedAnotherCollege === 'true'
+                    }
                   />
                   <label className="form-check-label" htmlFor="yes">
                     Yes
@@ -121,7 +124,10 @@ class StepFour extends Component {
                     name="hasAttendedAnotherCollege"
                     id="no"
                     value="No"
-                    checked={this.state.anotherCollege === 'false'}
+                    checked={
+                      this.state.anotherCollege === "false" ||
+                      this.props.hasAttendedAnotherCollege === 'false'
+                    }
                   />
                   <label className="form-check-label" htmlFor="no">
                     No
@@ -130,7 +136,7 @@ class StepFour extends Component {
               </div>
             </div>
           </div>
-          {this.state.anotherCollege === 'true' ? (
+          {this.state.anotherCollege === "true" ? (
             <p>After Section 4 Go To Section 5 (2nd College Attended) </p>
           ) : (
             <p>

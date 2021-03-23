@@ -56,43 +56,33 @@ class StepFive extends Component {
             </div>
 
             <div className="mb-3">
-              <label
-                htmlFor="secondCollegeStartMonthYear"
-                className="form-label"
-              >
-                2nd College Start Month And Year
+              <label htmlFor="secondCollegeStartMonth" className="form-label">
+                2nd College Start Month
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="secondCollegeStartMonthYear"
-                name="secondCollegeStartMonthYear"
-                value={this.props.secondCollegeStartMonthYear}
+                id="secondCollegeStartMonth"
+                name="secondCollegeStartMonth"
+                value={this.props.secondCollegeStartMonth}
                 onChange={this.props.handleChange}
-                placeholder="example June 2020"
+                placeholder="example Sep"
               />
             </div>
 
             <div className="mb-3">
-              <label
-                htmlFor="secondCollegeStopMonthYear"
-                className="form-label"
-              >
-                2nd College STOP Month And Year
+              <label htmlFor="secondCollegeStopYear" className="form-label">
+                2nd College Start Year
               </label>
-              <p>
-                <small>
-                  IE: December 2019 or if you are still attending put "Present"
-                </small>
-              </p>
+              <p></p>
               <input
                 className="form-control"
                 type="text"
-                id="secondCollegeStopMonthYear"
-                name="secondCollegeStopMonthYear"
-                value={this.props.secondCollegeStopMonthYear}
+                id="secondCollegeStartYear"
+                name="secondCollegeStartYear"
+                value={this.props.secondCollegeStartYear}
                 onChange={this.props.handleChange}
-                placeholder="example July 2020"
+                placeholder="example 2016"
               />
             </div>
 
@@ -112,7 +102,10 @@ class StepFive extends Component {
                     name="hasAttendedAnotherCollege2"
                     id="yes"
                     value="Yes"
-                    checked={this.state.anotherCollege === 'true'}
+                    checked={
+                      this.state.anotherCollege === "true" ||
+                      this.props.hasAttendedAnotherCollege2 === "true"
+                    }
                   />
                   <label className="form-check-label" htmlFor="yes">
                     Yes
@@ -126,7 +119,10 @@ class StepFive extends Component {
                     name="hasAttendedAnotherCollege2"
                     id="no"
                     value="No"
-                    checked={this.state.anotherCollege === 'false'}
+                    checked={
+                      this.state.anotherCollege === "false" ||
+                      this.props.hasAttendedAnotherCollege2 === "false"
+                    }
                   />
                   <label className="form-check-label" htmlFor="no">
                     No
@@ -134,7 +130,7 @@ class StepFive extends Component {
                 </div>
               </div>
             </div>
-            {this.state.anotherCollege === 'true' ? (
+            {this.state.anotherCollege === "true" ? (
               <p>Go To Section 6 (3rd College Attended) </p>
             ) : (
               <p>Go To Section 9 (Any Additional Time After High School)</p>

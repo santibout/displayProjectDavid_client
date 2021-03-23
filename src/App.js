@@ -71,14 +71,14 @@ class App extends Component {
       // Step 5
       secondCollegeAttended: "",
       secondCollegeName: "",
-      secondCollegeStartMonthYear: "",
+      secondCollegeStartYear: "",
       secondCollegeStopMonthYear: "",
       hasAttendedAnotherCollege2: "",
       // Step 6
       thirdCollegeAttendedDescription: "",
       thirdCollegeName: "",
-      thirdCollegeStartMonthYear: "",
-      thirdCollegeStopMonthYear: "",
+      thirdCollegeStartMonth: "",
+      thirdCollegeStartYear: "",
       hasAttendedAnotherCollege3: "",
       // Step 7
       fourthCollegeAttendedDescription: "",
@@ -217,13 +217,13 @@ class App extends Component {
       hasAttendedAnotherCollege,
       secondCollegeAttended,
       secondCollegeName,
-      secondCollegeStartMonthYear,
+      secondCollegeStartYear,
       secondCollegeStopMonthYear,
       hasAttendedAnotherCollege2,
       thirdCollegeAttendedDescription,
       thirdCollegeName,
-      thirdCollegeStartMonthYear,
-      thirdCollegeStopMonthYear,
+      thirdCollegeStartMonth,
+      thirdCollegeStartYear,
       hasAttendedAnotherCollege3,
       fourthCollegeAttendedDescription,
       fourthCollegeName,
@@ -285,21 +285,13 @@ class App extends Component {
       studentEligibility,
       signature,
     } = this.state;
-    console.log(this.state);
     axios
-      .post("https://project-david.herokuapp.com/api/post", this.state)
-      // .post(" http://localhost:3201/api/post", this.state)
+      // .post("https://project-david.herokuapp.com/api/post", this.state)
+      .post(" http://localhost:3201/api/post", this.state)
       .then((r) => {
-        axios
-          .get("https://project-david.herokuapp.com/fetch-pdf")
-          // .get("http://localhost:3201/fetch-pdf")
-          .then((r) =>
-            console.log("msg from client...Got and displayed pdf file")
-          )
-          .catch((err) => console.log("Error: ", err));
-        console.log(r);
+        console.log("r: ", r);
       })
-      .catch((err) => console.log("err: ", err));
+      .catch((err) => console.log("err in axios: ", err));
 
     console.log(`Your registration detail: \n
     Form Description: ${formDescription} \n
@@ -329,14 +321,14 @@ class App extends Component {
       \n \n
     secondCollegeAttended: ${secondCollegeAttended} \n
     secondCollegeName: ${secondCollegeName} \n
-    secondCollegeStartMonthYear: ${secondCollegeStartMonthYear} \n
+    secondCollegeStartYear: ${secondCollegeStartYear} \n
     secondCollegeStopMonthYear: ${secondCollegeStopMonthYear} \n
     hasAttendedAnotherCollege2: ${hasAttendedAnotherCollege2} \n
       \n \n
     thirdCollegeAttendedDescription: ${thirdCollegeAttendedDescription} \n
     thirdCollegeName: ${thirdCollegeName} \n
-    thirdCollegeStartMonthYear: ${thirdCollegeStartMonthYear} \n
-    thirdCollegeStopMonthYear: ${thirdCollegeStopMonthYear} \n
+    thirdCollegeStartMonth: ${thirdCollegeStartMonth} \n
+    thirdCollegeStartYear: ${thirdCollegeStartYear} \n
     hasAttendedAnotherCollege3: ${hasAttendedAnotherCollege3} \n
       \n \n
     fourthCollegeAttendedDescription: ${fourthCollegeAttendedDescription} \n
@@ -458,11 +450,134 @@ class App extends Component {
     this.setState({ currentStep: 1 });
   };
 
+  populate = async () => {
+    this.setState({
+      formDescription: "Step 1 Description",
+      currentDate: new Date().toISOString().substr(0, 10),
+      fullName: "Doe, John, V",
+      gender: "male",
+      streetAddress: "123 Athletic Way",
+      cityStateZip: "Irvine, CA 92548",
+      phoneNumber: "5552134353",
+      dob: "1989-11-23",
+      studentId: "D320117",
+      // Step 2
+      communityCollegeInfo: "Current School Info",
+      communityCollege: "V School",
+      sport: "Men's Water Polo",
+      athleticConference: "Orange Empire Conference (OEC)",
+      // Step 3
+      highSchoolInfo: "Step Three Info",
+      highSchool: "Hoover High School",
+      highSchoolCityState: "San Diego, CA",
+      highSchoolMonthYearGraduation: "June 2005",
+      // Step 4
+      accountForTimesAfterHS: "Step 4 Info",
+      previousCommunityCollege: "Irvine Community College",
+      previousCommunityCollegeStartMonth: "Jan",
+      previousCommunityCollegeStartYear: "2017",
+      hasAttendedAnotherCollege: "true",
+      // Step 5
+      secondCollegeAttended: "Step 5 Info",
+      secondCollegeName: "Golden West Community College",
+      secondCollegeStartMonth: "Aug",
+      secondCollegeStartYear: "2016",
+      hasAttendedAnotherCollege2: "true",
+      // Step 6
+      thirdCollegeAttendedDescription: "Step Six Info",
+      thirdCollegeName: "Costa Mesa Community College",
+      thirdCollegeStartMonth: "Apr",
+      thirdCollegeStartYear: "2016",
+      hasAttendedAnotherCollege3: "true",
+      // Step 7
+      fourthCollegeAttendedDescription: "",
+      fourthCollegeName: "",
+      fourthCollegeStartMonthYear: "",
+      fourthCollegeStopMonthYear: "",
+      hasAttendedAnotherCollege4: "",
+      // Step 9
+      currentStep: 7,
+      anyAdditionalTimeAfterHS: "",
+      takenTimeOffSchool: "",
+      // Step 10
+      laspseOfTimeIn: "",
+      timeOffOfSchoolReason: "",
+      // Step 11
+      employed: "",
+      employerCityState: "",
+      employmentDate: "",
+      // Step 12
+      unemployed: "",
+      unemploymentDate: "",
+      // Step 13
+      armedForces: "",
+      armedForcesDate: "",
+      // Step 14
+      other: "",
+      otherDescription: "",
+      otherDate: "",
+      // Step 15
+      laspseOfTimeIn2: "",
+      laspseOfTimeIn2Option: "",
+      // Step 16
+      employed2: "",
+      employerCityState2: "",
+      employmentDate2: "",
+      // Step 17
+      unemployed2: "",
+      unemployedDate2: "",
+      // Step 18
+      armedForces2: "",
+      armedForcesDate2: "",
+      // Step 19
+      other2: "",
+      otherDescription2: "",
+      otherDate2: "",
+      // Step 20
+      sportDescription2: "",
+      sport2: "",
+      // Step 21
+      collegeAthleticParticipation: "",
+      everPlayedOnAthleticTeamInCollege: "",
+      // Step 22
+      secondSportDescription: "",
+      secondSport: "",
+      whichCollege: "",
+      sportLevel: "",
+      semester: "",
+      competitionYear: "",
+      anotherSport: "",
+      // Step 23
+      sportDescription3: "",
+      sport3: "",
+      sport3College: "",
+      sportLevel3: "",
+      sport3Semester: "",
+      sport3Year: "",
+      anotherSport3: "",
+      // Step 24
+      sportDescription4: "",
+      sport4: "",
+      sport4College: "",
+      sportLevel4: "",
+      sport4Semester: "",
+      sport4Year: "",
+      // Step 25
+      authorize: "",
+      initials: "",
+      // Step 26
+      studentEligibility: "",
+      signature: "",
+    });
+    console.log(this.currentDate);
+  };
+
   render() {
     return (
       <div className="App">
         <img className="cccaImg" src={cccaaImg} alt="CCCAA Image" />
         <div className="form-container">
+          <button onClick={this.populate}>Populate Form</button>
           {this.state.currentStep !== "getData" ? (
             <button onClick={this.getData} className="btn btn-primary">
               Display Data
@@ -472,13 +587,16 @@ class App extends Component {
               Back To Form
             </button>
           )}
+          <button type="submit" onClick={this.handleSubmit}>
+            Submit
+          </button>
           <form onSubmit={this.handleSubmit}>
             <GetData currentStep={this.state.currentStep} />
             <StepOne
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               formDescription={this.state.formDescription}
-              date={this.state.date}
+              currentDate={this.state.currentDate}
               fullName={this.state.fullName}
               gender={this.state.gender}
               address={this.state.streetAddress}
@@ -508,11 +626,13 @@ class App extends Component {
             <StepFour
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               accountForTimesAfterHS={this.state.accountForTimesAfterHS}
               previousCommunityCollege={this.state.previousCommunityCollege}
-              previousCommunityCollegeStartMonthYear={
-                this.state.previousCommunityCollegeStartMonthYear
+              previousCommunityCollegeStartMonth={
+                this.state.previousCommunityCollegeStartMonth
+              }
+              previousCommunityCollegeStartYear={
+                this.state.previousCommunityCollegeStartYear
               }
               hasAttendedAnotherCollege={this.state.hasAttendedAnotherCollege}
             />
@@ -521,10 +641,8 @@ class App extends Component {
               handleChange={this.handleChange}
               secondCollegeAttended={this.state.secondCollegeAttended}
               secondCollegeName={this.state.secondCollegeName}
-              secondCollegeStartMonthYear={
-                this.state.secondCollegeStartMonthYear
-              }
-              secondCollegeStopMonthYear={this.state.secondCollegeStopMonthYear}
+              secondCollegeStartMonth={this.state.secondCollegeStartMonth}
+              secondCollegeStartYear={this.state.secondCollegeStartYear}
               hasAttendedAnotherCollege2={this.state.hasAttendedAnotherCollege2}
             />
             <StepSix
@@ -534,8 +652,8 @@ class App extends Component {
                 this.state.thirdCollegeAttendedDescription
               }
               thirdCollegeName={this.state.thirdCollegeName}
-              thirdCollegeStartMonthYear={this.state.thirdCollegeStartMonthYear}
-              thirdCollegeStopMonthYear={this.state.thirdCollegeStopMonthYear}
+              thirdCollegeStartMonth={this.state.thirdCollegeStartMonth}
+              thirdCollegeStartYear={this.state.thirdCollegeStartYear}
               hasAttendedAnotherCollege3={this.state.hasAttendedAnotherCollege3}
             />
             <StepSeven
@@ -555,21 +673,18 @@ class App extends Component {
             <StepNine
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               anyAdditionalTimeAfterHS={this.state.anyAdditionalTimeAfterHS}
               takenTimeOffSchool={this.state.takenTimeOffSchool}
             />
             <StepTen
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               laspseOfTimeIn={this.state.laspseOfTimeIn}
               timeOffOfSchoolReason={this.state.timeOffOfSchoolReason}
             />
             <StepEleven
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               employed={this.state.employed}
               employerCityState={this.state.employerCityState}
               employmentDate={this.state.employmentDate}
@@ -577,21 +692,18 @@ class App extends Component {
             <StepTwelve
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               unemployed={this.unemployed}
               unemploymentDate={this.unemploymentDate}
             />
             <StepThirteen
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               armedForces={this.statearmedForces}
               armedForcesDate={this.statearmedForcesDate}
             />
             <StepFourteen
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               other={this.state.other}
               otherDescription={this.state.otherDescription}
               otherDate={this.state.otherDate}
@@ -599,14 +711,12 @@ class App extends Component {
             <StepFifteen
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               laspseOfTimeIn2={this.state.laspseOfTimeIn2}
               laspseOfTimeIn2Option={this.state.laspseOfTimeIn2Option}
             />
             <StepSixteen
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               employed2={this.state.employed2}
               employerCityState2={this.state.employerCityState2}
               employmentDate2={this.state.employmentDate2}
@@ -614,21 +724,18 @@ class App extends Component {
             <StepSeventeen
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               unemployed2={this.unemployed2}
               unemployedDate2={this.unemploymentDate2}
             />
             <StepEighteen
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               armedForces2={this.state.armedForces2}
               armedForcesDate2={this.state.armedForcesDate2}
             />
             <StepNineteen
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               other2={this.state.other2}
               otherDescription2={this.state.otherDescription2}
               otherDate={this.state.otherDate2}
@@ -636,14 +743,12 @@ class App extends Component {
             <StepTwenty
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               sportDescription2={this.state.sportDescription2}
               sport2={this.state.sport2}
             />
             <StepTwentyOne
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               collegeAthleticParticipation={
                 this.state.collegeAthleticParticipation
               }
@@ -654,7 +759,6 @@ class App extends Component {
             <StepTwentyTwo
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               secondSportDescription={this.state.secondSportDescription}
               secondSport={this.state.secondSport}
               whichCollege={this.state.whichCollege}
@@ -666,7 +770,6 @@ class App extends Component {
             <StepTwentyThree
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               sportDescription3={this.state.sportDescription3}
               sport3={this.state.sport3}
               sport3College={this.state.sport3College}
@@ -679,7 +782,6 @@ class App extends Component {
             <StepTwentyFour
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               sportDescription4={this.state.sportDescription4}
               sport4={this.state.sport4}
               sport4College={this.state.sport4College}
@@ -692,7 +794,6 @@ class App extends Component {
             <StepTwentyFive
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
               authorize={this.state.authorize}
               initials={this.state.initials}
             />

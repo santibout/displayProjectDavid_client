@@ -63,7 +63,7 @@ class StepTwo extends Component {
               <select
                 className="form-select"
                 name="sport"
-                value={this.state.sport}
+                value={this.props.sport}
                 onChange={this.setSport}
               >
                 <option defaultValue>Please Select A Sport</option>

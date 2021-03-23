@@ -45,7 +45,7 @@ class StepOne extends Component {
               type="date"
               id="currentDate"
               name="currentDate"
-              // value={this.props.formDescription}
+              value={this.props.currentDate}
               onChange={this.props.handleChange}
               placeholder="Form Description"
             />
@@ -178,7 +178,6 @@ class StepOne extends Component {
             placeholder="C012345678"
           />
         </div>
-        <button onClick={this.handleSubmit}>submit</button>
         <p>After Section 1 Go to section 5 (2nd College Attended)</p>
       </div>
     );

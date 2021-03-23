@@ -60,32 +60,32 @@ class StepSix extends Component {
 
             <div className="mb-3">
               <label
-                htmlFor="thirdCollegeStartMonthYear"
+                htmlFor="thirdCollegeStartMonth"
                 className="form-label"
               >
-                What Is The Month And Year You Started At College 3
+                What Is The Month You Started At College 3
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="thirdCollegeStartMonthYear"
-                name="thirdCollegeStartMonthYear"
-                value={this.props.thirdCollegeStartMonthYear}
+                id="thirdCollegeStartMonth"
+                name="thirdCollegeStartMonth"
+                value={this.props.thirdCollegeStartMonth}
                 onChange={this.props.handleChange}
                 placeholder="example June 2020"
               />
             </div>
 
             <div className="mb-3">
-              <label htmlFor="thirdCollegeStopMonthYear" className="form-label">
-                What Is The Month And Year You STOPPED At College 3
+              <label htmlFor="thirdCollegeStopYear" className="formtartbel">
+                What Is The Year You Started At College 3
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="thirdCollegeStopMonthYear"
-                name="thirdCollegeStopMonthYear"
-                value={this.props.thirdCollegeStopMonthYear}
+                id="thirdCollegeStartYear"
+                name="thirdCollegeStartYear"
+                value={this.props.thirdCollegeStartYear}
                 onChange={this.props.handleChange}
                 placeholder="example August 2020"
               />
@@ -107,7 +107,7 @@ class StepSix extends Component {
                     name="hasAttendedAnotherCollege3"
                     id="yes"
                     value="Yes"
-                    checked={this.state.anotherCollege === 'true'}
+                    checked={this.state.anotherCollege === 'true' || this.props.hasAttendedAnotherCollege3 === 'true'}
                   />
                   <label className="form-check-label" htmlFor="yes">
                     Yes
@@ -121,7 +121,7 @@ class StepSix extends Component {
                     name="hasAttendedAnotherCollege3"
                     id="no"
                     value="No"
-                    checked={this.state.anotherCollege === 'false'}
+                    checked={this.state.anotherCollege === 'false' || this.props.hasAttendedAnotherCollege3 === 'false'}
                   />
                   <label className="form-check-label" htmlFor="no">
                     No
