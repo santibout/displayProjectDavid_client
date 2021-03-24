@@ -4,17 +4,17 @@ class StepTwentyTwo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      another: false,
+      another: '',
     };
   }
   toggleAnother = (direction) => {
     if (direction === "on") {
-      this.setState({ another: true });
+      this.setState({ another: 'true' });
     }
     if (direction === "off") {
-      this.setState({ another: false });
+      this.setState({ another: 'false' });
     }
-  }
+  };
   render() {
     if (this.props.currentStep !== 22) {
       return null;
@@ -43,7 +43,11 @@ class StepTwentyTwo extends Component {
               <label htmlFor="secondSport" className="form-label">
                 Sport
               </label>
-              <select className="form-select" name="secondSport">
+              <select
+                className="form-select"
+                name="secondSport"
+                value={this.props.secondSport}
+              >
                 <option defaultValue>Open this select menu</option>
                 <option value="Men's Badminton">Men's Badminton</option>
                 <option value="Men's Baseball">Men's Baseball</option>
@@ -87,29 +91,30 @@ class StepTwentyTwo extends Component {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="whichCollege" className="form-label">
+              <label htmlFor="secondSportCollege" className="form-label">
                 From the answer you provided in the previous question. What
                 college did you attend when participating in SPORT 2?
-                <p>
-                  <small>For Example: Long Beach State</small>
-                </p>
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="whichCollege"
-                name="whichCollege"
-                value={this.props.whichCollege}
+                id="secondSportCollege"
+                name="secondSportCollege"
+                value={this.props.secondSportCollege}
                 onChange={this.props.handleChange}
-                placeholder="Short Answer Text"
+                placeholder="Example: Long Beach Community College"
               />
             </div>
 
             <div className="mb-3" onChange={this.props.handleChange}>
-              <label htmlFor="sportLevel" className="form-label">
+              <label htmlFor="secondSportLevel" className="form-label">
                 What Level Did You Complete SPORT 2 At?
               </label>
-              <select className="form-select" name="sportLevel">
+              <select
+                className="form-select"
+                name="secondSportLevel"
+                value={this.props.secondSportLevel}
+              >
                 <option defaultValue>Open this select menu</option>
                 <option value="Varsity (College Level)">
                   Varsity(College Level)
@@ -123,10 +128,14 @@ class StepTwentyTwo extends Component {
             </div>
 
             <div className="mb-3" onChange={this.props.handleChange}>
-              <label htmlFor="semester" className="form-label">
+              <label htmlFor="secondSportSemester" className="form-label">
                 What Semester Did You Compete SPORT 2 In?
               </label>
-              <select className="form-select" name="semester">
+              <select
+                className="form-select"
+                name="secondSportSemester"
+                value={this.props.secondSportSemester}
+              >
                 <option defaultValue>Open this select menu</option>
                 <option value="Fall">Fall</option>
                 <option value="Winter">Winter</option>
@@ -135,15 +144,15 @@ class StepTwentyTwo extends Component {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="competitionYear" className="form-label">
+              <label htmlFor="secondSportYear" className="form-label">
                 What YEAR did you compete SPORT 2 in?
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="competitionYear"
-                name="competitionYear"
-                value={this.props.competitionYear}
+                id="secondSportYear"
+                name="secondSportYear"
+                value={this.props.secondSportYear}
                 onChange={this.props.handleChange}
                 placeholder="Short answer text"
               />
@@ -162,9 +171,10 @@ class StepTwentyTwo extends Component {
                   <input
                     className="form-check-input"
                     type="radio"
-                    name="anotherSport"
+                    name="secondSportAnother"
                     id="yes"
                     value="yes"
+                    checked={this.props.secondSportAnother === "true" || this.state.another === 'true'}
                     onClick={() => this.toggleAnother("on")}
                   />
                   <label className="form-check-label" htmlFor="yes">
@@ -175,9 +185,10 @@ class StepTwentyTwo extends Component {
                   <input
                     className="form-check-input"
                     type="radio"
-                    name="anotherSport"
+                    name="secondSportAnother"
                     id="no"
                     value="no"
+                    checked={this.props.secondSportAnother === "false" || this.state.another === 'false'}
                     onClick={() => this.toggleAnother("off")}
                   />
                   <label className="form-check-label" htmlFor="no">
@@ -188,7 +199,7 @@ class StepTwentyTwo extends Component {
             </div>
           </div>
         </div>
-        {this.state.another ? (
+        {this.state.another === 'true' ? (
           <p>Go to section 23 (3rd Sport in College)</p>
         ) : (
           <p>Go to section 25 (Authorize Use Likeness)</p>

@@ -31,12 +31,12 @@ class StepTwentyFour extends Component {
             </div>
 
             <div className="mb-3" onChange={this.props.handleChange}>
-              <label htmlFor="sport4" className="form-label">
+              <label htmlFor="fourthSport" className="form-label">
                 In addition to the previous 3 sports. You have indicated that
                 you played in another season of sport in college or an
                 additional sport. Which sport did you play?
               </label>
-              <select className="form-select" name="sport4">
+              <select className="form-select" name="fourthSport" value={this.props.fourthSport}>
                 <option defaultValue>Open this select menu</option>
                 <option value="Men's Badminton">Men's Badminton</option>
                 <option value="Men's Baseball">Men's Baseball</option>
@@ -55,54 +55,51 @@ class StepTwentyFour extends Component {
                 <option value="Men's Volleyball">Men's Volleyball</option>
                 <option value="Men's Water Polo">Men's Water Polo</option>
                 <option value="Men's Wrestling">Men's Wrestling</option>
-                <option value="Woman's Badminton">Woman's Badminton</option>
-                <option value="Woman's Basketball">Women's Basketball</option>
-                <option value="Woman's Beach Volleyball">
+                <option value="Women's Badminton">Woman's Badminton</option>
+                <option value="Women's Basketball">Women's Basketball</option>
+                <option value="Women's Beach Volleyball">
                   Women's Beach Volleyball
                 </option>
-                <option value="Woman's Cross Country">
+                <option value="Women's Cross Country">
                   Women's Cross Country
                 </option>
-                <option value="Woman's Golf">Women's Golf</option>
-                <option value="Woman's Soccer">Women's Soccer</option>
-                <option value="Woman's Softball">Women's Softball</option>
-                <option value="Woman's Swimming And Diving">
+                <option value="Women's Golf">Women's Golf</option>
+                <option value="Women's Soccer">Women's Soccer</option>
+                <option value="Women's Softball">Women's Softball</option>
+                <option value="Women's Swimming And Diving">
                   Women's Swimming And Diving
                 </option>
-                <option value="Woman's Track And Field">
+                <option value="Women's Track And Field">
                   Women's Track And Field
                 </option>
-                <option value="Woman's Tennis">Women's Tennis</option>
-                <option value="Woman's Volleyball">Women's Volleyball</option>
-                <option value="Woman's Water Polo">Women's Water Polo</option>
-                <option value="Woman's Wrestling">Women's Wrestling</option>
+                <option value="Women's Tennis">Women's Tennis</option>
+                <option value="Women's Volleyball">Women's Volleyball</option>
+                <option value="Women's Water Polo">Women's Water Polo</option>
+                <option value="Women's Wrestling">Women's Wrestling</option>
               </select>
             </div>
 
             <div className="mb-3">
-              <label htmlFor="sport4College" className="form-label">
+              <label htmlFor="fourthSportCollege" className="form-label">
                 From the answer you provided in the previous question. What
                 college did you attend when participating in SPORT 4?
-                <p>
-                  <small>For Example: Long Beach State</small>
-                </p>
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="sport4College"
-                name="sport4College"
-                value={this.props.sport3College}
+                id="fourthSportCollege"
+                name="fourthSportCollege"
+                value={this.props.fourthSportCollege}
                 onChange={this.props.handleChange}
-                placeholder="Short Answer Text"
+                placeholder="Example: Long Beach Community College"
               />
             </div>
 
             <div className="mb-3" onChange={this.props.handleChange}>
-              <label htmlFor="sportLevel4" className="form-label">
+              <label htmlFor="fourthSportLevel" className="form-label">
                 What Level Did You Compete SPORT 4 At?
               </label>
-              <select className="form-select" name="sportLevel4">
+              <select className="form-select" name="fourthSportLevel" value={this.props.fourthSportLevel}>
                 <option defaultValue>Open this select menu</option>
                 <option value="Varsity (College Level)">
                   Varsity(College Level)
@@ -116,10 +113,10 @@ class StepTwentyFour extends Component {
             </div>
 
             <div className="mb-3" onChange={this.props.handleChange}>
-              <label htmlFor="sport4Semester" className="form-label">
+              <label htmlFor="fourthSportSemester" className="form-label">
                 What Semester Did You Compete SPORT 4 In?
               </label>
-              <select className="form-select" name="sport4Semester">
+              <select className="form-select" name="fourthSportSemester" value={this.props.fourthSportSemester}>
                 <option defaultValue>Open this select menu</option>
                 <option value="Fall">Fall</option>
                 <option value="Winter">Winter</option>
@@ -128,22 +125,21 @@ class StepTwentyFour extends Component {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="sport4Year" className="form-label">
+              <label htmlFor="fourthSportYear" className="form-label">
                 What YEAR did you compete SPORT 4 in?
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="sport4Year"
-                name="sport4Year"
-                value={this.props.sport4Year}
+                id="fourthSportYear"
+                name="fourthSportYear"
+                value={this.props.fourthSportYear}
                 onChange={this.props.handleChange}
                 placeholder="Short answer text"
               />
             </div>
           </div>
         </div>
-        <button onClick={this.handleSubmit}>submit</button>
         <p>After Section 24 Go To Section 25 (Authorize Use Likeness)</p>
       </div>
     );

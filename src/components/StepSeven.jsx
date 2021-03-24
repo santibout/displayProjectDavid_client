@@ -39,58 +39,94 @@ class StepSeven extends Component {
                 name="fourthCollegeAttendedDescription"
                 value={this.props.fourthCollegeAttendedDescription}
                 onChange={this.props.handleChange}
-                placeholder="Description (optional)"
+                placeholder="Description: (optional)"
               />
             </div>
 
             <div className="mb-3">
-              <label htmlFor="fourthCollegeName" className="form-label">
+              <label htmlFor="afterHSFourName" className="form-label">
                 4th College Name
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="fourthCollegeName"
-                name="fourthCollegeName"
-                value={this.props.fourthCollegeName}
+                id="afterHSFourName"
+                name="afterHSFourName"
+                value={this.props.afterHSFourName}
                 onChange={this.props.handleChange}
-                placeholder="Description (optional)"
+                placeholder="Description: (optional)"
               />
             </div>
 
             <div className="mb-3">
               <label
-                htmlFor="fourthCollegeStartMonthYear"
+                htmlFor="afterHSFourStartMonth"
                 className="form-label"
               >
-                4th College Start Month And Year
+                4th College Start Month
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="fourthCollegeStartMonthYear"
-                name="fourthCollegeStartMonthYear"
-                value={this.props.fourthCollegeStartMonthYear}
+                id="afterHSFourStartMonth"
+                name="afterHSFourStartMonth"
+                value={this.props.afterHSFourStartMonth}
                 onChange={this.props.handleChange}
-                placeholder="Description (optional)"
+                placeholder="Description: Feb"
               />
             </div>
 
             <div className="mb-3">
               <label
-                htmlFor="fourthCollegeStopMonthYear"
+                htmlFor="afterHSFourStartYear"
                 className="form-label"
               >
-                4th College STOP Month And Year
+                4th College Start Year
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="fourthCollegeStopMonthYear"
-                name="fourthCollegeStopMonthYear"
-                value={this.props.fourthCollegeStopMonthYear}
+                id="afterHSFourStartYear"
+                name="afterHSFourStartYear"
+                value={this.props.afterHSFourStartYear}
                 onChange={this.props.handleChange}
-                placeholder="Description (optional)"
+                placeholder="Description: (optional)"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label
+                htmlFor="afterHSFourEndMonth"
+                className="form-label"
+              >
+                4th College End Month
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                id="afterHSFourEndMonth"
+                name="afterHSFourEndMonth"
+                value={this.props.afterHSFourEndMonth}
+                onChange={this.props.handleChange}
+                placeholder="Description: (optional)"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label
+                htmlFor="afterHSFourEndYear"
+                className="form-label"
+              >
+                4th College End Year
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                id="afterHSFourEndYear"
+                name="afterHSFourEndYear"
+                value={this.props.afterHSFourEndYear}
+                onChange={this.props.handleChange}
+                placeholder="Description: 2020"
               />
             </div>
 
@@ -107,10 +143,10 @@ class StepSeven extends Component {
                     onChange={this.toggleAnotherCollegeOn}
                     className="form-check-input"
                     type="radio"
-                    name="hasAttendedAnotherCollege4"
+                    name="afterHSFourAnother"
                     id="yes"
                     value="Yes"
-                    checked={this.state.anotherCollege === "true"}
+                    checked={this.state.anotherCollege === "true" || this.props.afterHSFourAnother === 'true'}
                   />
                   <label className="form-check-label" htmlFor="yes">
                     Yes
@@ -121,10 +157,10 @@ class StepSeven extends Component {
                     onChange={this.toggleAnotherCollegeOff}
                     className="form-check-input"
                     type="radio"
-                    name="hasAttendedAnotherCollege4"
+                    name="afterHSFourAnother"
                     id="no"
                     value="No"
-                    checked={this.state.anotherCollege === "false"}
+                    checked={this.state.anotherCollege === "false" || this.props.afterHSFourAnother === 'false'}
                   />
                   <label className="form-check-label" htmlFor="no">
                     No

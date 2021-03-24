@@ -41,48 +41,80 @@ class StepFive extends Component {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="secondCollegeName" className="form-label">
+              <label htmlFor="afterHSTwoName" className="form-label">
                 What Is The Name Of College 2
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="secondCollegeName"
-                name="secondCollegeName"
-                value={this.props.secondCollegeName}
+                id="afterHSTwoName"
+                name="afterHSTwoName"
+                value={this.props.afterHSTwoName}
                 onChange={this.props.handleChange}
-                placeholder="example Irvine Community College"
+                placeholder="example: Irvine Community College"
               />
             </div>
 
             <div className="mb-3">
-              <label htmlFor="secondCollegeStartMonth" className="form-label">
+              <label htmlFor="afterHSTwoStartMonth" className="form-label">
                 2nd College Start Month
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="secondCollegeStartMonth"
-                name="secondCollegeStartMonth"
-                value={this.props.secondCollegeStartMonth}
+                id="afterHSTwoStartMonth"
+                name="afterHSTwoStartMonth"
+                value={this.props.afterHSTwoStartMonth}
                 onChange={this.props.handleChange}
                 placeholder="example Sep"
               />
             </div>
 
             <div className="mb-3">
-              <label htmlFor="secondCollegeStopYear" className="form-label">
+              <label htmlFor="afterHSTwoStartYear" className="form-label">
                 2nd College Start Year
               </label>
               <p></p>
               <input
                 className="form-control"
                 type="text"
-                id="secondCollegeStartYear"
-                name="secondCollegeStartYear"
-                value={this.props.secondCollegeStartYear}
+                id="afterHSTwoStartYear"
+                name="afterHSTwoStartYear"
+                value={this.props.afterHSTwoStartYear}
                 onChange={this.props.handleChange}
                 placeholder="example 2016"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="afterHSTwoEndMonth" className="form-label">
+                2nd College End Month
+              </label>
+              <p></p>
+              <input
+                className="form-control"
+                type="text"
+                id="afterHSTwoEndMonth"
+                name="afterHSTwoEndMonth"
+                value={this.props.afterHSTwoEndMonth}
+                onChange={this.props.handleChange}
+                placeholder="example: Dec"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="afterHSTwoEndYear" className="form-label">
+                2nd College End Year
+              </label>
+              <p></p>
+              <input
+                className="form-control"
+                type="text"
+                id="afterHSTwoEndYear"
+                name="afterHSTwoEndYear"
+                value={this.props.afterHSTwoEndYear}
+                onChange={this.props.handleChange}
+                placeholder="example: 2019"
               />
             </div>
 
@@ -99,12 +131,12 @@ class StepFive extends Component {
                     onChange={this.toggleAnotherCollegeOn}
                     className="form-check-input"
                     type="radio"
-                    name="hasAttendedAnotherCollege2"
+                    name="afterHSTwoAnother"
                     id="yes"
                     value="Yes"
                     checked={
                       this.state.anotherCollege === "true" ||
-                      this.props.hasAttendedAnotherCollege2 === "true"
+                      this.props.afterHSTwoAnother === "true"
                     }
                   />
                   <label className="form-check-label" htmlFor="yes">
@@ -116,12 +148,12 @@ class StepFive extends Component {
                     onChange={this.toggleAnotherCollegeOff}
                     className="form-check-input"
                     type="radio"
-                    name="hasAttendedAnotherCollege2"
+                    name="afterHSTwoAnother"
                     id="no"
                     value="No"
                     checked={
                       this.state.anotherCollege === "false" ||
-                      this.props.hasAttendedAnotherCollege2 === "false"
+                      this.props.afterHSTwoAnother === "false"
                     }
                   />
                   <label className="form-check-label" htmlFor="no">

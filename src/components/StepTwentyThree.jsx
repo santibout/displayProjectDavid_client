@@ -4,15 +4,15 @@ class StepTwentyThree extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      another: false,
+      another: '',
     };
   }
   toggleAnother = (direction) => {
     if (direction === "on") {
-      this.setState({ another: true });
+      this.setState({ another: 'true' });
     }
     if (direction === "off") {
-      this.setState({ another: false });
+      this.setState({ another: 'false' });
     }
   };
   render() {
@@ -40,12 +40,12 @@ class StepTwentyThree extends Component {
             </div>
 
             <div className="mb-3" onChange={this.props.handleChange}>
-              <label htmlFor="sport3" className="form-label">
+              <label htmlFor="thirdSport" className="form-label">
                 In addition to the previous 2 sports. You have indicated that
                 you played in another season of sport in college or an
                 additional sport. Which sport did you play?
               </label>
-              <select className="form-select" name="sport3">
+              <select className="form-select" name="thirdSport" value={this.props.thirdSport}>
                 <option defaultValue>Open this select menu</option>
                 <option value="Men's Badminton">Men's Badminton</option>
                 <option value="Men's Baseball">Men's Baseball</option>
@@ -64,57 +64,54 @@ class StepTwentyThree extends Component {
                 <option value="Men's Volleyball">Men's Volleyball</option>
                 <option value="Men's Water Polo">Men's Water Polo</option>
                 <option value="Men's Wrestling">Men's Wrestling</option>
-                <option value="Woman's Badminton">Woman's Badminton</option>
-                <option value="Woman's Basketball">Women's Basketball</option>
-                <option value="Woman's Beach Volleyball">
+                <option value="Women's Badminton">Woman's Badminton</option>
+                <option value="Women's Basketball">Women's Basketball</option>
+                <option value="Women's Beach Volleyball">
                   Women's Beach Volleyball
                 </option>
-                <option value="Woman's Cross Country">
+                <option value="Women's Cross Country">
                   Women's Cross Country
                 </option>
-                <option value="Woman's Golf">Women's Golf</option>
-                <option value="Woman's Soccer">Women's Soccer</option>
-                <option value="Woman's Softball">Women's Softball</option>
-                <option value="Woman's Swimming And Diving">
+                <option value="Women's Golf">Women's Golf</option>
+                <option value="Women's Soccer">Women's Soccer</option>
+                <option value="Women's Softball">Women's Softball</option>
+                <option value="Women's Swimming And Diving">
                   Women's Swimming And Diving
                 </option>
-                <option value="Woman's Track And Field">
+                <option value="Women's Track And Field">
                   Women's Track And Field
                 </option>
-                <option value="Woman's Tennis">Women's Tennis</option>
-                <option value="Woman's Volleyball">Women's Volleyball</option>
-                <option value="Woman's Water Polo">Women's Water Polo</option>
-                <option value="Woman's Wrestling">Women's Wrestling</option>
+                <option value="Women's Tennis">Women's Tennis</option>
+                <option value="Women's Volleyball">Women's Volleyball</option>
+                <option value="Women's Water Polo">Women's Water Polo</option>
+                <option value="Women's Wrestling">Women's Wrestling</option>
               </select>
             </div>
 
             <div className="mb-3">
-              <label htmlFor="sport3College" className="form-label">
+              <label htmlFor="thirdSportCollege" className="form-label">
                 From the answer you provided in the previous question. What
                 college did you attend when participating in SPORT 3?
-                <p>
-                  <small>For Example: Long Beach State</small>
-                </p>
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="sport3College"
-                name="sport3College"
-                value={this.props.sport3College}
+                id="thirdSportCollege"
+                name="thirdSportCollege"
+                value={this.props.thirdSportCollege}
                 onChange={this.props.handleChange}
-                placeholder="Short Answer Text"
+                placeholder="Example: Long Beach Community College"
               />
             </div>
 
             <div className="mb-3" onChange={this.props.handleChange}>
-              <label htmlFor="sportLevel3" className="form-label">
+              <label htmlFor="thirdSportLevel" className="form-label">
                 What Level Did You Compete SPORT 3 At?
               </label>
-              <select className="form-select" name="sportLevel3">
+              <select className="form-select" name="thirdSportLevel" value={this.props.thirdSportLevel}>
                 <option defaultValue>Open this select menu</option>
                 <option value="Varsity (College Level)">
-                  Varsity(College Level)
+                  Varsity (College Level)
                 </option>
                 <option value="Club Team">Club Team</option>
                 <option value="Redshirt">Redshirt</option>
@@ -125,10 +122,10 @@ class StepTwentyThree extends Component {
             </div>
 
             <div className="mb-3" onChange={this.props.handleChange}>
-              <label htmlFor="sport3Semester" className="form-label">
+              <label htmlFor="thirdSportSemester" className="form-label">
                 What Semester Did You Compete SPORT 3 In?
               </label>
-              <select className="form-select" name="sport3Semester">
+              <select className="form-select" name="thirdSportSemester" value={this.props.thirdSportSemester}>
                 <option defaultValue>Open this select menu</option>
                 <option value="Fall">Fall</option>
                 <option value="Winter">Winter</option>
@@ -137,17 +134,17 @@ class StepTwentyThree extends Component {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="sport3Year" className="form-label">
+              <label htmlFor="thirdSportYear" className="form-label">
                 What YEAR did you compete SPORT 3 in?
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="sport3Year"
-                name="sport3Year"
-                value={this.props.sport3Year}
+                id="thirdSportYear"
+                name="thirdSportYear"
+                value={this.props.thirdSportYear}
                 onChange={this.props.handleChange}
-                placeholder="Short answer text"
+                placeholder="example: 2019"
               />
             </div>
 
@@ -164,9 +161,10 @@ class StepTwentyThree extends Component {
                   <input
                     className="form-check-input"
                     type="radio"
-                    name="anotherSport3"
+                    name="thirdSportAnother"
                     id="yes"
                     value="yes"
+                    checked={this.props.thirdSportAnother === 'true' || this.state.another === 'true'}
                     onClick={() => this.toggleAnother("on")}
                   />
                   <label className="form-check-label" htmlFor="yes">
@@ -177,9 +175,10 @@ class StepTwentyThree extends Component {
                   <input
                     className="form-check-input"
                     type="radio"
-                    name="anotherSport3"
+                    name="thirdSportAnother"
                     id="no"
                     value="no"
+                    checked={this.props.thirdSportAnother === 'false' || this.state.another === 'false'}
                     onClick={() => this.toggleAnother("off")}
                   />
                   <label className="form-check-label" htmlFor="no">
@@ -190,7 +189,7 @@ class StepTwentyThree extends Component {
             </div>
           </div>
         </div>
-        {this.state.another ? (
+        {this.state.another === 'true' ? (
           <p>Go to section 24 (4th Sport in College)</p>
         ) : (
           <p>Go to section 25 (Authorize Use Likeness)</p>

@@ -26,30 +26,30 @@ class StepFour extends Component {
         <div className="row">
           <div className="col-md">
             <div className="mb-3">
-              <label htmlFor="accountForTimesAfterHS" className="form-label">
+              <label htmlFor="afterHSOneInfo" className="form-label">
                 Accounting For Time After High School
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="accountForTimesAfterHS"
-                name="accountForTimesAfterHS"
-                value={this.props.accountForTimesAfterHS}
+                id="afterHSOneInfo"
+                name="afterHSOneInfo"
+                value={this.props.afterHSOneInfo}
                 onChange={this.props.handleChange}
                 placeholder="Description (optional)"
               />
             </div>
 
             <div className="mb-3">
-              <label htmlFor="previousCommunityCollege" className="form-label">
-                List The Community College You Are Currently At
+              <label htmlFor="afterHSOneName" className="form-label">
+                List The Community College You Were Currently At
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="previousCommunityCollege"
-                name="previousCommunityCollege"
-                value={this.props.previousCommunityCollege}
+                id="afterHSOneName"
+                name="afterHSOneName"
+                value={this.props.afterHSOneName}
                 onChange={this.props.handleChange}
                 placeholder="example: Irvine Community College"
               />
@@ -57,7 +57,7 @@ class StepFour extends Component {
 
             <div className="mb-3">
               <label
-                htmlFor="previousCommunityCollegeStartMonth"
+                htmlFor="afterHSOneStartMonth"
                 className="form-label"
               >
                 What Is The Month You Started At This College?
@@ -65,9 +65,9 @@ class StepFour extends Component {
               <input
                 className="form-control"
                 type="text"
-                id="previousCommunityCollegeStartMonth"
-                name="previousCommunityCollegeStartMonth"
-                value={this.props.previousCommunityCollegeStartMonth}
+                id="afterHSOneStartMonth"
+                name="afterHSOneStartMonth"
+                value={this.props.afterHSOneStartMonth}
                 onChange={this.props.handleChange}
                 placeholder="example: August"
               />
@@ -75,7 +75,7 @@ class StepFour extends Component {
 
             <div className="mb-3">
               <label
-                htmlFor="previousCommunityCollegeStartYear"
+                htmlFor="afterHSOneStartYear"
                 className="form-label"
               >
                 What Is The Year You Started At This College?
@@ -83,9 +83,45 @@ class StepFour extends Component {
               <input
                 className="form-control"
                 type="text"
-                id="previousCommunityCollegeStartYear"
-                name="previousCommunityCollegeStartYear"
-                value={this.props.previousCommunityCollegeStartYear}
+                id="afterHSOneStartYear"
+                name="afterHSOneStartYear"
+                value={this.props.afterHSOneStartYear}
+                onChange={this.props.handleChange}
+                placeholder="example: 2019"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label
+                htmlFor="afterHSOneEndMonth"
+                className="form-label"
+              >
+                What Is The Month You Left This College?
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                id="afterHSOneEndMonth"
+                name="afterHSOneEndMonth"
+                value={this.props.afterHSOneEndMonth}
+                onChange={this.props.handleChange}
+                placeholder="example: Aug"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label
+                htmlFor="afterHSOneEndYear"
+                className="form-label"
+              >
+                What Is The Year You Left This College?
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                id="afterHSOneEndYear"
+                name="afterHSOneEndYear"
+                value={this.props.afterHSOneEndYear}
                 onChange={this.props.handleChange}
                 placeholder="example: 2019"
               />
@@ -104,12 +140,12 @@ class StepFour extends Component {
                     onChange={this.toggleAnotherCollegeOn}
                     className="form-check-input"
                     type="radio"
-                    name="hasAttendedAnotherCollege"
+                    name="afterHSOneAnother"
                     id="yes"
                     value="Yes"
                     checked={
                       this.state.anotherCollege === "true" ||
-                      this.props.hasAttendedAnotherCollege === 'true'
+                      this.props.afterHSOneAnother === 'true'
                     }
                   />
                   <label className="form-check-label" htmlFor="yes">
@@ -121,12 +157,12 @@ class StepFour extends Component {
                     onChange={this.toggleAnotherCollegeOff}
                     className="form-check-input"
                     type="radio"
-                    name="hasAttendedAnotherCollege"
+                    name="afterHSOneAnother"
                     id="no"
                     value="No"
                     checked={
                       this.state.anotherCollege === "false" ||
-                      this.props.hasAttendedAnotherCollege === 'false'
+                      this.props.afterHSOneAnother === 'false'
                     }
                   />
                   <label className="form-check-label" htmlFor="no">

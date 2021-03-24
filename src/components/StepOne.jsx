@@ -53,7 +53,7 @@ class StepOne extends Component {
 
           <div className="mb-3">
             <label htmlFor="fullName" className="form-label">
-              Full Name(First, Middle Initial, Last)
+              Full Name(Last, First, Middle Initial)
             </label>
             <input
               className="form-control"
@@ -62,7 +62,7 @@ class StepOne extends Component {
               name="fullName"
               value={this.props.fullName}
               onChange={this.props.handleChange}
-              placeholder="John A. Doe"
+              placeholder="Doe, John V"
             />
           </div>
 
@@ -130,7 +130,7 @@ class StepOne extends Component {
             name="cityStateZip"
             value={this.props.address2}
             onChange={this.props.handleChange}
-            placeholder="1234 Athletic Way"
+            placeholder="Irvine, CA 92528"
           />
         </div>
 

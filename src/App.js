@@ -63,29 +63,35 @@ class App extends Component {
       highSchoolMonthYearGraduation: "",
       // Step 4
       accountForTimesAfterHS: "",
-      previousCommunityCollege: "",
-      previousCommunityCollegeStartMonthYear: "",
-      previousCommunityCollegeStartMonth: "",
-      previousCommunityCollegeStartYear: "",
-      hasAttendedAnotherCollege: "",
+      afterHSOneName: "",
+      afterHSOneStartMonth: "",
+      afterHSOneStartYear: "",
+      afterHSOneEndMonth: "",
+      afterHSOneEndYear: "",
       // Step 5
       secondCollegeAttended: "",
-      secondCollegeName: "",
-      secondCollegeStartYear: "",
-      secondCollegeStopMonthYear: "",
-      hasAttendedAnotherCollege2: "",
+      afterHSTwoName: "",
+      afterHSTwoStartMonth: "",
+      afterHSTwoStartYear: "",
+      afterHSTwoEndMonth: "",
+      afterHSTwoEndYear: "",
+      afterHSTwoAnother: "",
       // Step 6
       thirdCollegeAttendedDescription: "",
-      thirdCollegeName: "",
-      thirdCollegeStartMonth: "",
-      thirdCollegeStartYear: "",
-      hasAttendedAnotherCollege3: "",
+      afterHSThreeName: "",
+      afterHSThreeStartMonth: "",
+      afterHSThreeStartYear: "",
+      afterHSThreeEndMonth: "",
+      afterHSThreeEndYear: "",
+      afterHSThreeAnother: "",
       // Step 7
       fourthCollegeAttendedDescription: "",
-      fourthCollegeName: "",
-      fourthCollegeStartMonthYear: "",
-      fourthCollegeStopMonthYear: "",
-      hasAttendedAnotherCollege4: "",
+      afterHSFourName: "",
+      afterHSFourStartMonth: "",
+      afterHSFourStartYear: "",
+      afterHSFourEndMonth: "",
+      afterHSFourEndYear: "",
+      afterHSFourAnother: "",
       // Step 9
       anyAdditionalTimeAfterHS: "",
       takenTimeOffSchool: "",
@@ -132,26 +138,26 @@ class App extends Component {
       // Step 22
       secondSportDescription: "",
       secondSport: "",
-      whichCollege: "",
-      sportLevel: "",
-      semester: "",
+      secondSportCollege: "",
+      secondSportLevel: "",
+      secondSportSemester: "",
       competitionYear: "",
       anotherSport: "",
       // Step 23
       sportDescription3: "",
-      sport3: "",
-      sport3College: "",
-      sportLevel3: "",
-      sport3Semester: "",
-      sport3Year: "",
-      anotherSport3: "",
+      thirdSport: "",
+      thirdSportCollege: "",
+      thirdSportLevel: "",
+      thirdSportSemester: "",
+      thirdSportYear: "",
+      thirdSportAnother: "",
       // Step 24
       sportDescription4: "",
-      sport4: "",
-      sport4College: "",
-      sportLevel4: "",
-      sport4Semester: "",
-      sport4Year: "",
+      fourthSport: "",
+      fourthSportCollege: "",
+      fourthSportLevel: "",
+      fourthSportSemester: "",
+      fourthSportYear: "",
       // Step 25
       authorize: "",
       initials: "",
@@ -193,222 +199,13 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const {
-      formDescription,
-      currentDate,
-      fullName,
-      gender,
-      streetAddress,
-      cityStateZip,
-      phoneNumber,
-      dob,
-      studentId,
-      communityCollegeInfo,
-      communityCollege,
-      sport,
-      athleticConference,
-      highSchoolInfo,
-      highSchool,
-      highSchoolCityState,
-      highSchoolMonthYearGraduation,
-      accountForTimesAfterHS,
-      previousCommunityCollege,
-      previousCommunityCollegeStartMonthYear,
-      hasAttendedAnotherCollege,
-      secondCollegeAttended,
-      secondCollegeName,
-      secondCollegeStartYear,
-      secondCollegeStopMonthYear,
-      hasAttendedAnotherCollege2,
-      thirdCollegeAttendedDescription,
-      thirdCollegeName,
-      thirdCollegeStartMonth,
-      thirdCollegeStartYear,
-      hasAttendedAnotherCollege3,
-      fourthCollegeAttendedDescription,
-      fourthCollegeName,
-      fourthCollegeStartMonthYear,
-      fourthCollegeStopMonthYear,
-      hasAttendedAnotherCollege4,
-      anyAdditionalTimeAfterHS,
-      takenTimeOffSchool,
-      laspseOfTimeIn,
-      timeOffOfSchoolReason,
-      employed,
-      employerCityState,
-      employmentDate,
-      unemployed,
-      unemploymentDate,
-      armedForces,
-      armedForcesDate,
-      other,
-      otherDescription,
-      otherDate,
-      laspseOfTimeIn2,
-      laspseOfTimeIn2Option,
-      employed2,
-      employerCityState2,
-      employmentDate2,
-      unemployed2,
-      unemployedDate2,
-      armedForces2,
-      armedForcesDate2,
-      other2,
-      otherDescription2,
-      otherDate2,
-      sportDescription2,
-      sport2,
-      collegeAthleticParticipation,
-      everPlayedOnAthleticTeamInCollege,
-      secondSportDescription,
-      secondSport,
-      whichCollege,
-      sportLevel,
-      semester,
-      competitionYear,
-      anotherSport,
-      sportDescription3,
-      sport3,
-      sport3College,
-      sportLevel3,
-      sport3Semester,
-      sport3Year,
-      anotherSport3,
-      sportDescription4,
-      sport4,
-      sport4College,
-      sportLevel4,
-      sport4Semester,
-      sport4Year,
-      authorize,
-      initials,
-      studentEligibility,
-      signature,
-    } = this.state;
     axios
-      .post("https://project-david.herokuapp.com/api/post", this.state)
-      // .post(" http://localhost:3201/api/post", this.state)
+      // .post("https://project-david.herokuapp.com/api/post", this.state)
+      .post(" http://localhost:3201/api/post", this.state)
       .then((r) => {
         console.log("r: ", r);
       })
       .catch((err) => console.log("err in axios: ", err));
-
-    console.log(`Your registration detail: \n
-    Form Description: ${formDescription} \n
-    Curent Date: ${currentDate} \n
-    Full Name: ${fullName} \n
-    Gender: ${gender} \n
-    Street Address: ${streetAddress} \n
-    City, State, ZIP: ${cityStateZip} \n
-    Phone Number: ${phoneNumber} \n
-    DOB: ${dob} \n
-    Student ID: ${studentId}
-      \n \n
-    Current Community College Info: ${communityCollegeInfo} \n
-    Community College: ${communityCollege} \n
-    Sport: ${sport} \n
-    Athletic Conference: ${athleticConference}
-      \n \n
-    highSchoolInfo: ${highSchoolInfo} \n
-    highSchool: ${highSchool} \n
-    highSchoolCityState: ${highSchoolCityState} \n
-    highSchoolMonthYearGraduation: ${highSchoolMonthYearGraduation} \n
-      \n \n
-    accountForTimesAfterHS: ${accountForTimesAfterHS} \n
-    previousCommunityCollege: ${previousCommunityCollege} \n
-    previousCommunityCollegeStartMonthYear: ${previousCommunityCollegeStartMonthYear} \n
-    hasAttendedAnotherCollege: ${hasAttendedAnotherCollege} \n
-      \n \n
-    secondCollegeAttended: ${secondCollegeAttended} \n
-    secondCollegeName: ${secondCollegeName} \n
-    secondCollegeStartYear: ${secondCollegeStartYear} \n
-    secondCollegeStopMonthYear: ${secondCollegeStopMonthYear} \n
-    hasAttendedAnotherCollege2: ${hasAttendedAnotherCollege2} \n
-      \n \n
-    thirdCollegeAttendedDescription: ${thirdCollegeAttendedDescription} \n
-    thirdCollegeName: ${thirdCollegeName} \n
-    thirdCollegeStartMonth: ${thirdCollegeStartMonth} \n
-    thirdCollegeStartYear: ${thirdCollegeStartYear} \n
-    hasAttendedAnotherCollege3: ${hasAttendedAnotherCollege3} \n
-      \n \n
-    fourthCollegeAttendedDescription: ${fourthCollegeAttendedDescription} \n
-    fourthCollegeName: ${fourthCollegeName} \n
-    fourthCollegeStartMonthYear: ${fourthCollegeStartMonthYear} \n
-    fourthCollegeStopMonthYear: ${fourthCollegeStopMonthYear} \n
-    hasAttendedAnotherCollege3: ${hasAttendedAnotherCollege4} \n
-      \n \n
-    anyAdditionalTimeAfterHS: ${anyAdditionalTimeAfterHS} \n
-    takenTimeOffSchool: ${takenTimeOffSchool} \n
-      \n \n
-    laspseOfTimeIn: ${laspseOfTimeIn} \n
-    timeOffOfSchoolReason: ${timeOffOfSchoolReason}\n
-      \n \n
-    employed: ${employed} \n
-    employerCityState: ${employerCityState} \n
-    employmentDate: ${employmentDate} \n
-      \n \n
-    unemployed: ${unemployed} \n
-    unemploymentDate: ${unemploymentDate} \n
-      \n \n
-    armedForces: ${armedForces} \n
-    armedForcesDate: ${armedForcesDate} \n
-      \n \n
-    other: ${other} \n
-    otherDescription: ${otherDescription} \n
-    otherDate: ${otherDate} \n
-      \n \n
-    laspseOfTimeIn2: ${laspseOfTimeIn2} \n
-    laspseOfTimeIn2Option: ${laspseOfTimeIn2Option} \n
-      \n \n
-    employed2: ${employed2} \n
-    employerCitySate2: ${employerCityState2} \n
-    employmentDate2: ${employmentDate2} \n
-      \n \n
-    unemployed2: ${unemployed2} \n
-    unemployedDate2: ${unemployedDate2} \n
-      \n \n
-    armedForces2: ${armedForces2} \n
-    armedForcesDate2: ${armedForcesDate2} \n
-      \n \n
-    other2: ${other2} \n
-    otherDescription2: ${otherDescription2} \n
-    otherDate2: ${otherDate2} \n
-      \n \n
-    sportDescription2: ${sportDescription2} \n
-    sport2: ${sport2} \n
-      \n \n
-    collegeAthleticParticipation: ${collegeAthleticParticipation} \n
-    everPlayedOnAnAthleticTeamInCollege: ${everPlayedOnAthleticTeamInCollege} \n
-      \n \n
-    secondSportDescription: ${secondSportDescription} \n
-    secondSport: ${secondSport} \n
-    whichCollege: ${whichCollege} \n
-    sportLevel: ${sportLevel} \n
-    semester: ${semester} \n
-    competitionYear: ${competitionYear} \n
-    anotherSport: ${anotherSport} \n
-      \n \n
-    sportDescription3: ${sportDescription3} \n
-    sport3: ${sport3} \n
-    sport3College: ${sport3College} \n
-    sportLevel3: ${sportLevel3} \n
-    sport3Semester: ${sport3Semester} \n
-    sport3Year: ${sport3Year} \n
-    anotherSport3: ${anotherSport3}
-      \n \n
-    sportDescription4: ${sportDescription4} \n
-    sport4: ${sport4} \n
-    sport4College: ${sport4College} \n
-    sportLevel4: ${sportLevel4} \n
-    sport4Semester: ${sport4Semester} \n
-    sport4Year: ${sport4Year} \n
-      \n \n
-    authorize: ${authorize} \n
-    initials: ${initials} \n
-      \n \n
-    studentEligibility: ${studentEligibility} \n
-    signature: ${signature}
-    `);
   };
 
   get previousButton() {
@@ -466,43 +263,54 @@ class App extends Component {
       communityCollege: "V School",
       sport: "Men's Water Polo",
       athleticConference: "Orange Empire Conference (OEC)",
+      currentCollegeStartMonth: "Jan",
+      currentCollegeStartYear: "2019",
+      currentCollegeEndMonth: "Jul",
+      currentCollegeEndYear: "2019",
       // Step 3
       highSchoolInfo: "Step Three Info",
       highSchool: "Hoover High School",
-      highSchoolCityState: "San Diego, CA",
+      highSchoolCityState: "San Diego, CA 92064",
       highSchoolMonthYearGraduation: "June 2005",
       // Step 4
       accountForTimesAfterHS: "Step 4 Info",
-      previousCommunityCollege: "Irvine Community College",
-      previousCommunityCollegeStartMonth: "Jan",
-      previousCommunityCollegeStartYear: "2017",
-      hasAttendedAnotherCollege: "true",
+      afterHSOneName: "Irvine Community College",
+      afterHSOneStartMonth: "Jan",
+      afterHSOneStartYear: "2011",
+      afterHSOneEndMonth: "Jan",
+      afterHSOneEndYear: "2012",
+      afterHSOneAnother: "true",
       // Step 5
       secondCollegeAttended: "Step 5 Info",
-      secondCollegeName: "Golden West Community College",
-      secondCollegeStartMonth: "Aug",
-      secondCollegeStartYear: "2016",
-      hasAttendedAnotherCollege2: "true",
+      afterHSTwoName: "Golden West Community College",
+      afterHSTwoStartMonth: "Jan",
+      afterHSTwoStartYear: "2017",
+      afterHSTwoEndMonth: "Aug",
+      afterHSTwoEndYear: "2017",
+      afterHSTwoAnother: "true",
       // Step 6
       thirdCollegeAttendedDescription: "Step Six Info",
-      thirdCollegeName: "Costa Mesa Community College",
-      thirdCollegeStartMonth: "Apr",
-      thirdCollegeStartYear: "2016",
-      hasAttendedAnotherCollege3: "true",
+      afterHSThreeName: "Costa Mesa Community College",
+      afterHSThreeStartMonth: "Apr",
+      afterHSThreeStartYear: "2019",
+      afterHSThreeEndMonth: "Jul",
+      afterHSThreeEndYear: "2019",
+      afterHSThreeAnother: "true",
       // Step 7
       fourthCollegeAttendedDescription: "",
-      fourthCollegeName: "",
-      fourthCollegeStartMonthYear: "",
-      fourthCollegeStopMonthYear: "",
-      hasAttendedAnotherCollege4: "",
-      // Step 9
-      currentStep: 7,
+      afterHSFourName: "San Diego Community College",
+      afterHSFourStartMonth: "May",
+      afterHSFourStartYear: "2020",
+      afterHSFourEndMonth: "Sep",
+      afterHSFourEndYear: "2020",
+      afterHSFourAnother: "true",
+      // Step 8
       anyAdditionalTimeAfterHS: "",
       takenTimeOffSchool: "",
-      // Step 10
+      // Step 9
       laspseOfTimeIn: "",
       timeOffOfSchoolReason: "",
-      // Step 11
+      // Step 10
       employed: "",
       employerCityState: "",
       employmentDate: "",
@@ -541,27 +349,28 @@ class App extends Component {
       everPlayedOnAthleticTeamInCollege: "",
       // Step 22
       secondSportDescription: "",
-      secondSport: "",
-      whichCollege: "",
-      sportLevel: "",
-      semester: "",
-      competitionYear: "",
-      anotherSport: "",
+      secondSport: "Men's Water Polo",
+      secondSportCollege: "Irvine Community College",
+      secondSportLevel: "Redshirt",
+      secondSportSemester: "Fall",
+      secondSportYear: "2011",
+      secondSportAnother: "true",
       // Step 23
       sportDescription3: "",
-      sport3: "",
-      sport3College: "",
-      sportLevel3: "",
-      sport3Semester: "",
-      sport3Year: "",
-      anotherSport3: "",
+      thirdSport: "Men's Swimming And Diving",
+      thirdSportCollege: "Golden West Community College",
+      thirdSportLevel: "Varsity (College Level)",
+      thirdSportSemester: "Winter",
+      thirdSportYear: "2017",
+      thirdSportAnother: "true",
+      currentStep: 23,
       // Step 24
       sportDescription4: "",
-      sport4: "",
-      sport4College: "",
-      sportLevel4: "",
-      sport4Semester: "",
-      sport4Year: "",
+      fourthSport: "Men's Wrestling",
+      fourthSportCollege: "Costa Mesa Community College",
+      fourthSportLevel: "Junior Varisty",
+      fourthSportSemester: "Spring",
+      fourthSportYear: "2019",
       // Step 25
       authorize: "",
       initials: "",
@@ -612,6 +421,10 @@ class App extends Component {
               communityCollege={this.state.communityCollege}
               sport={this.state.sport}
               athleticConference={this.state.athleticConference}
+              currentCollegeStartMonth={this.currentCollegeStartMonth}
+              currentCollegeStartYear={this.currentCollegeStartYear}
+              currentCollegeEndMonth={this.currentCollegeEndMonth}
+              currentCollegeEndYear={this.currentCollegeEndYear}
             />
             <StepThree
               currentStep={this.state.currentStep}
@@ -627,47 +440,43 @@ class App extends Component {
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               accountForTimesAfterHS={this.state.accountForTimesAfterHS}
-              previousCommunityCollege={this.state.previousCommunityCollege}
-              previousCommunityCollegeStartMonth={
-                this.state.previousCommunityCollegeStartMonth
-              }
-              previousCommunityCollegeStartYear={
-                this.state.previousCommunityCollegeStartYear
-              }
-              hasAttendedAnotherCollege={this.state.hasAttendedAnotherCollege}
+              afterHSOneName={this.state.afterHSOneName}
+              afterHSOneStartMonth={this.state.afterHSOneStartMonth}
+              afterHSOneStartYear={this.state.afterHSOneStartYear}
+              afterHSOneEndMonth={this.state.afterHSOneEndMonth}
+              afterHSOneEndYear={this.state.afterHSOneEndYear}
+              afterHSOneAnother={this.state.afterHSOneAnother}
             />
             <StepFive
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               secondCollegeAttended={this.state.secondCollegeAttended}
-              secondCollegeName={this.state.secondCollegeName}
-              secondCollegeStartMonth={this.state.secondCollegeStartMonth}
-              secondCollegeStartYear={this.state.secondCollegeStartYear}
-              hasAttendedAnotherCollege2={this.state.hasAttendedAnotherCollege2}
+              afterHSTwoName={this.state.afterHSTwoName}
+              afterHSTwoStartMonth={this.state.afterHSTwoStartMonth}
+              afterHSTwoStartYear={this.state.afterHSTwoStartYear}
+              afterHSTwoEndMonth={this.state.afterHSTwoEndMonth}
+              afterHSTwoEndYear={this.state.afterHSTwoEndYear}
+              afterHSTwoAnother={this.state.afterHSTwoAnother}
             />
             <StepSix
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              thirdCollegeAttendedDescription={
-                this.state.thirdCollegeAttendedDescription
-              }
-              thirdCollegeName={this.state.thirdCollegeName}
-              thirdCollegeStartMonth={this.state.thirdCollegeStartMonth}
-              thirdCollegeStartYear={this.state.thirdCollegeStartYear}
-              hasAttendedAnotherCollege3={this.state.hasAttendedAnotherCollege3}
+              afterHSThreeName={this.state.afterHSThreeName}
+              afterHSThreeStartMonth={this.state.afterHSThreeStartMonth}
+              afterHSThreeStartYear={this.state.afterHSThreeStartYear}
+              afterHSThreeEndMonth={this.state.afterHSThreeEndMonth}
+              afterHSThreeEndYear={this.state.afterHSThreeEndYear}
+              afterHSThreeAnother={this.state.afterHSThreeAnother}
             />
             <StepSeven
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              fourthCollegeAttendedDescription={
-                this.state.fourthCollegeAttendedDescription
-              }
-              fourthCollegeName={this.state.fourthCollegeName}
-              fourthCollegeStartMonthYear={
-                this.state.fourthCollegeStartMonthYear
-              }
-              fourthCollegeStopMonthYear={this.state.fourthCollegeStopMonthYear}
-              hasAttendedAnotherCollege4={this.state.hasAttendedAnotherCollege4}
+              afterHSFourName={this.state.afterHSFourName}
+              afterHSFourStartMonth={this.state.afterHSFourStartMonth}
+              afterHSFourStartYear={this.state.afterHSFourStartYear}
+              afterHSFourEndMonth={this.state.afterHSFourEndMonth}
+              afterHSFourEndYear={this.state.afterHSFourEndYear}
+              afterHSFourAnother={this.state.afterHSFourAnother}
             />
             <StepEight currentStep={this.state.currentStep} />
             <StepNine
@@ -761,34 +570,33 @@ class App extends Component {
               handleChange={this.handleChange}
               secondSportDescription={this.state.secondSportDescription}
               secondSport={this.state.secondSport}
-              whichCollege={this.state.whichCollege}
-              sportLevel={this.state.sportLevel}
-              semester={this.state.semester}
-              competitionYear={this.state.competitionYear}
-              anotherSport={this.state.anotherSport}
+              secondSportCollege={this.state.secondSportCollege}
+              secondSportLevel={this.state.secondSportLevel}
+              secondSportSemester={this.state.secondSportSemester}
+              secondSportYear={this.state.secondSportYear}
+              secondSportAnother={this.state.secondSportAnother}
             />
             <StepTwentyThree
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               sportDescription3={this.state.sportDescription3}
-              sport3={this.state.sport3}
-              sport3College={this.state.sport3College}
-              sport3Year={this.state.sport3Year}
-              sportLevel3={this.state.sportLevel3}
-              sport3Semester={this.state.sport3Semester}
-              sport3Year={this.state.sport3Year}
-              anotherSport3={this.state.anotherSport3}
+              thirdSport={this.state.thirdSport}
+              thirdSportCollege={this.state.thirdSportCollege}
+              thirdSportLevel={this.state.thirdSportLevel}
+              thirdSportSemester={this.state.thirdSportSemester}
+              thirdSportYear={this.state.thirdSportYear}
+              thirdSportAnother={this.state.thirdSportAnother}
             />
             <StepTwentyFour
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               sportDescription4={this.state.sportDescription4}
-              sport4={this.state.sport4}
-              sport4College={this.state.sport4College}
-              sport4Year={this.state.sport4Year}
-              sportLevel4={this.state.sportLevel4}
-              sport4Semester={this.state.sport4Semester}
-              sport4Year={this.state.sport4Year}
+              fourthSport={this.state.fourthSport}
+              fourthSportCollege={this.state.fourthSportCollege}
+              fourthSportYear={this.state.fourthSportYear}
+              fourthSportLevel={this.state.fourthSportLevel}
+              fourthSportSemester={this.state.fourthSportSemester}
+              fourthSportYear={this.state.fourthSportYear}
               anotherSport4={this.state.anotherSport4}
             />
             <StepTwentyFive

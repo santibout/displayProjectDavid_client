@@ -43,7 +43,7 @@ class StepTwo extends Component {
 
             <div className="mb-3">
               <label htmlFor="communityCollege" className="form-label">
-                Current Community College
+                Current Community College Name
               </label>
               <input
                 className="form-control"
@@ -100,6 +100,52 @@ class StepTwo extends Component {
               </select>
             </div>
 
+            
+            {/* <div className="mb-3">
+              <label htmlFor="communityCollegeStartMonth" className="form-label">
+                Current Community College Start Month
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                id="communityCollegeStartMonth"
+                name="currentCollegeStartMonth"
+                value={this.props.currentCollegeStartYear}
+                onChange={this.props.handleChange}
+                placeholder="example: Oct"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="currentCollegeEndYear" className="form-label">
+                Current Community College Start Year
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                id="currentCollegeEndYear"
+                name="currentCollegeEndYear"
+                value={this.props.currentCollegeEndYear}
+                onChange={this.props.handleChange}
+                placeholder="example: 2019"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="currentCollegeStartYear" className="form-label">
+                Current Community College End Month
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                id="currentCollegeStartYear"
+                name="currentCollegeStartYear"
+                value={this.props.currentCollegeStartMonth}
+                onChange={this.props.handleChange}
+                placeholder="example: 2020"
+              />
+            </div> */}
+
             <div className="mb-3">
               <label>Athletic Conference</label>
               <p>
@@ -109,6 +155,8 @@ class StepTwo extends Component {
                   California Football Association (SCFA)
                 </small>
               </p>
+
+
               <div
                 className="d-flex justify-content-start"
                 onChange={this.props.handleChange}

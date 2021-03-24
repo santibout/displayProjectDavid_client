@@ -47,7 +47,7 @@ class StepThree extends Component {
 
             <div className="mb-3">
               <label htmlFor="highSchoolCityState" className="form-label">
-                What CITY And STATE Was Your High School In? 
+                What CITY, STATE And, ZIP Code Was Your High School In? 
               </label>
               <input
                 className="form-control"
@@ -56,7 +56,7 @@ class StepThree extends Component {
                 name="highSchoolCityState"
                 value={this.props.highSchoolCityState}
                 onChange={this.props.handleChange}
-                placeholder="example Huntington Beach, CA"
+                placeholder="example Huntington Beach, CA 90210"
               />
             </div>
 
