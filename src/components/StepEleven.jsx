@@ -45,17 +45,59 @@ class StepEleven extends Component {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="employmentDate" className="form-label">
-                Employment Date
+              <label htmlFor="employmentStartMonth" className="form-label">
+                Employment Start Month
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="employmentDate"
-                name="employmentDate"
-                value={this.props.employmentDate}
+                id="employmentStartMonth"
+                name="employmentStartMonth"
+                value={this.props.employmentStartMonth}
                 onChange={this.props.handleChange}
-                placeholder="NEED MONTH AND YEAR   For example:  June 2019   TO    Dec 2019"
+                placeholder="example: Jan"
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="employmentStartYear" className="form-label">
+                Employment Start Year
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                id="employmentStartYear"
+                name="employmentStartYear"
+                value={this.props.employmentStartYear}
+                onChange={this.props.handleChange}
+                placeholder="example: 2020"
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="employmentEndMonth" className="form-label">
+                Employment End Month
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                id="employmentEndMonth"
+                name="employmentEndMonth"
+                value={this.props.employmentEndMonth}
+                onChange={this.props.handleChange}
+                placeholder="example: Dec"
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="employmentEndYear" className="form-label">
+                Employment End Year
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                id="employmentEndYear"
+                name="employmentEndYear"
+                value={this.props.employmentEndYear}
+                onChange={this.props.handleChange}
+                placeholder="example: 2021"
               />
             </div>
           </div>

@@ -30,25 +30,59 @@ class StepTwelve extends Component {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="unemploymentDate" className="form-label">
-                If you were unemployed we need to account for the time in which
-                you did not attend any post high school education and you do not
-                have any record of having employment.
-                <br/>
-                <p>
-                  <small>
-                    NEED MONTH AND YEAR For example: June 2019 TO Dec 2019
-                  </small>
-                </p>
+              <label htmlFor="unemploymentStartMonth" className="form-label">
+                Unemployment Start Month
               </label>
               <input
                 className="form-control"
                 type="text"
-                id="unemploymentDate"
-                name="unemploymentDate"
-                value={this.props.unemploymentDate}
+                id="unemploymentStartMonth"
+                name="unemploymentStartMonth"
+                value={this.props.unemploymentStartMonth}
                 onChange={this.props.handleChange}
-                placeholder="NEED MONTH AND YEAR   For example:  June 2019   TO    Dec 2019"
+                placeholder="example: Jan"
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="unemploymentStartYear" className="form-label">
+                Unemployment Start Year
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                id="unemploymentStartYear"
+                name="unemploymentStartYear"
+                value={this.props.unemploymentStartYear}
+                onChange={this.props.handleChange}
+                placeholder="example: 2020"
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="unemploymentEndMonth" className="form-label">
+                Unemployment End Month
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                id="unemploymentEndMonth"
+                name="unemploymentEndMonth"
+                value={this.props.unemploymentEndMonth}
+                onChange={this.props.handleChange}
+                placeholder="example: Dec"
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="unemploymentEndYear" className="form-label">
+                Unemployment End Year
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                id="unemploymentEndYear"
+                name="unemploymentEndYear"
+                value={this.props.unemploymentEndYear}
+                onChange={this.props.handleChange}
+                placeholder="example: 2021"
               />
             </div>
           </div>

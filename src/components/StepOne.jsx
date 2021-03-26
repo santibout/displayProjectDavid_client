@@ -15,10 +15,24 @@ class StepOne extends Component {
       return null;
     }
     return (
-      <div className="container">
+      <div className="container needs-validation">
         <h3>Step 1 of 26</h3>
+
         {/* <p className="section-p">CCCAA Eligibility Form</p> */}
         <div className="row">
+          <div class="col-md-4">
+            <label for="validationCustom01" className="form-label">
+              First name
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="validationCustom01"
+              value="Mark"
+              required
+            />
+            <div className="valid-feedback">Looks good!</div>
+          </div>
           <div className="col-md">
             <div className="mb-3">
               <label htmlFor="eligibility" className="form-label">
@@ -32,7 +46,9 @@ class StepOne extends Component {
                 value={this.props.formDescription}
                 onChange={this.props.handleChange}
                 placeholder="Form Description"
+                required
               />
+              <div class="invalid-feedback">Looks good!</div>
             </div>
           </div>
 

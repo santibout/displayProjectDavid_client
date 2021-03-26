@@ -101,10 +101,16 @@ class App extends Component {
       // Step 11
       employed: "",
       employerCityState: "",
-      employmentDate: "",
+      employmentStartMonth: "",
+      employmentStartYear: "",
+      employmentEndMonth: "",
+      employmentEndYear: "",
       // Step 12
       unemployed: "",
-      unemploymentDate: "",
+      unemployedStartMonth: "",
+      unemployedStartYear: "",
+      unemployedEndMonth: "",
+      unemployedEndYear: "",
       // Step 13
       armedForces: "",
       armedForcesDate: "",
@@ -199,9 +205,124 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const data = {
+      communityCollege: this.state.communityCollege,
+      athleticConference: this.state.athleticConference,
+      sport: this.state.sport,
+      phoneNumber: this.state.phoneNumber,
+      fullName: this.state.fullName,
+      streetAddress: this.state.streetAddress,
+      cityStateZip: this.state.cityStateZip,
+      gender: this.state.gender,
+      studentId: this.state.studentId,
+      currentDate: this.state.currentDate,
+      highSchool: this.state.highSchool,
+      highSchoolCityState: this.state.highSchoolCityState,
+      dob: this.state.dob,
+      highSchoolMonthYearGraduation: this.state.highSchoolMonthYearGraduation,
+      afterHS: [],
+    };
+    if (
+      this.state.afterHSOneName !== "" &&
+      this.state.afterHSOneName !== undefined
+    ) {
+      data.afterHS.push({
+        startMonth: this.state.afterHSOneStartMonth,
+        startYear: this.state.afterHSOneStartYear,
+        endMonth: this.state.afterHSOneEndMonth,
+        endYear: this.state.afterHSOneEndYear,
+        name: this.state.afterHSOneName,
+      });
+    }
+    if (
+      this.state.afterHSTwoName !== "" &&
+      this.state.afterHSTwoName !== undefined
+    ) {
+      data.afterHS.push({
+        startMonth: this.state.afterHSTwoStartMonth,
+        startYear: this.state.afterHSTwoStartYear,
+        endMonth: this.state.afterHSTwoEndMonth,
+        endYear: this.state.afterHSTwoEndYear,
+        name: this.state.afterHSTwoName,
+      });
+    }
+    if (
+      this.state.afterHSThreeName !== "" &&
+      this.state.afterHSThreeName !== undefined
+    ) {
+      data.afterHS.push({
+        startMonth: this.state.afterHSThreeStartMonth,
+        startYear: this.state.afterHSThreeStartYear,
+        endMonth: this.state.afterHSThreeEndMonth,
+        endYear: this.state.afterHSThreeEndYear,
+        name: this.state.afterHSThreeName,
+      });
+    }
+    if (
+      this.state.afterHSFourName !== "" &&
+      this.state.afterHSFourName !== undefined
+    ) {
+      data.afterHS.push({
+        startMonth: this.state.afterHSFourStartMonth,
+        startYear: this.state.afterHSFourStartYear,
+        endMonth: this.state.afterHSFourEndMonth,
+        endYear: this.state.afterHSFourEndYear,
+        name: this.state.afterHSFourName,
+      });
+    }
+    if (
+      this.state.afterHSOneName !== "" &&
+      this.state.afterHSOneName !== undefined
+    ) {
+      data.afterHS.push({
+        startMonth: this.state.afterHSOneStartMonth,
+        startYear: this.state.afterHSOneStartYear,
+        endMonth: this.state.afterHSOneEndMonth,
+        endYear: this.state.afterHSOneEndYear,
+        name: this.state.afterHSOneName,
+      });
+    }
+    if (
+      this.state.unemploymentDate !== "" &&
+      this.state.unemploymentDate !== undefined
+    ) {
+      data.afterHS.push({
+        startMonth: "NTC",
+        startYear: "NTC",
+        endMonth: "NTC",
+        endYear: "NTC",
+        name: this.state.employerCityState,
+      });
+    }
+    if (
+      this.state.employerCityState !== "" &&
+      this.state.employerCityState !== undefined
+    ) {
+      data.afterHS.push({
+        startMonth: this.state.employmentStartMonth,
+        startYear: this.state.employmentStartYear,
+        endMonth: this.state.employmentEndMonth,
+        endYear: this.state.employmentEndYear,
+        name: this.state.employerCityState,
+      });
+    }
+    if (
+      this.state.unemploymentStartMonth !== "" &&
+      this.state.unemploymentStartMonth !== undefined
+    ) {
+      data.afterHS.push({
+        startMonth: this.state.employmentStartMonth,
+        startYear: this.state.employmentStartYear,
+        endMonth: this.state.employmentEndMonth,
+        endYear: this.state.employmentEndYear,
+        name: "Unemployed",
+      });
+    }
+    console.log("data");
+    console.log(data);
     axios
-      .post("https://project-david.herokuapp.com/api/post", this.state)
-      // .post(" http://localhost:3201/api/post", this.state)
+      // .post("https://project-david.herokuapp.com/api/post", this.state)
+      .post(" http://localhost:3201/api/post", data)
       .then((r) => {
         console.log("r: ", r);
       })
@@ -251,7 +372,7 @@ class App extends Component {
     this.setState({
       formDescription: "Step 1 Description",
       currentDate: new Date().toISOString().substr(0, 10),
-      fullName: "Doe, John, V",
+      fullName: "Santibout, Samuel, J",
       gender: "male",
       streetAddress: "123 Athletic Way",
       cityStateZip: "Irvine, CA 92548",
@@ -260,7 +381,7 @@ class App extends Component {
       studentId: "D320117",
       // Step 2
       communityCollegeInfo: "Current School Info",
-      communityCollege: "V School",
+      communityCollege: "Mount Miguel Community College",
       sport: "Men's Water Polo",
       athleticConference: "Orange Empire Conference (OEC)",
       currentCollegeStartMonth: "Jan",
@@ -363,7 +484,6 @@ class App extends Component {
       thirdSportSemester: "Winter",
       thirdSportYear: "2017",
       thirdSportAnother: "true",
-      currentStep: 23,
       // Step 24
       sportDescription4: "",
       fourthSport: "Men's Wrestling",
@@ -378,7 +498,6 @@ class App extends Component {
       studentEligibility: "",
       signature: "",
     });
-    console.log(this.currentDate);
   };
 
   render() {
@@ -396,10 +515,13 @@ class App extends Component {
               Back To Form
             </button>
           )}
-          <button type="submit" onClick={this.handleSubmit}>
-            Submit
-          </button>
-          <form onSubmit={this.handleSubmit}>
+          <form
+            onSubmit={this.handleSubmit}
+            className="needs-validation" noValidate
+          >
+            <button type="submit" onSubmit={this.handleSubmit} className='btn btn-primary'>
+              Submit
+            </button>
             <GetData currentStep={this.state.currentStep} />
             <StepOne
               currentStep={this.state.currentStep}
@@ -496,13 +618,19 @@ class App extends Component {
               handleChange={this.handleChange}
               employed={this.state.employed}
               employerCityState={this.state.employerCityState}
-              employmentDate={this.state.employmentDate}
+              employmentStartMonth={this.state.employmentStartMonth}
+              employmentStartYear={this.state.employmentStartYear}
+              employmentEndMonth={this.state.employmentEndMonth}
+              employmentEndYear={this.state.employmentEndYear}
             />
             <StepTwelve
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
-              unemployed={this.unemployed}
-              unemploymentDate={this.unemploymentDate}
+              unemployerCityState={this.state.unemployerCityState}
+              unemploymentStartMonth={this.state.unemploymentStartMonth}
+              unemploymentStartYear={this.state.unemploymentStartYear}
+              unemploymentEndMonth={this.state.unemploymentEndMonth}
+              unemploymentEndYear={this.state.unemploymentEndYear}
             />
             <StepThirteen
               currentStep={this.state.currentStep}
@@ -617,11 +745,11 @@ class App extends Component {
             {this.previousButton}
             {this.nextButton}
           </div>
-          {this.state.currentStep === this.state.lastStep && (
+          {/* {this.state.currentStep === this.state.lastStep && (
             <button type="submit" onClick={this.handleSubmit}>
               Submit
             </button>
-          )}
+          )} */}
         </div>
       </div>
     );
