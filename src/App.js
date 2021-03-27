@@ -204,7 +204,6 @@ class App extends Component {
   }
 
   handleSubmit = (event) => {
-    console.log("post it");
     event.preventDefault();
     const data = {
       communityCollege: this.state.communityCollege,
@@ -322,7 +321,7 @@ class App extends Component {
     console.log("data");
     console.log(data);
     axios
-      .post("https://project-david.herokuapp.com/api/post", this.state)
+      .post("https://project-david.herokuapp.com/api/post", data)
       // .post(" http://localhost:3201/api/post", data)
       .then((r) => {
         console.log("r: ", r);
