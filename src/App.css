@@ -38,11 +38,8 @@ label {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.top-btns {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
 }

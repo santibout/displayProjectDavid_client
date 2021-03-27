@@ -505,23 +505,27 @@ class App extends Component {
       <div className="App">
         <img className="cccaImg" src={cccaaImg} alt="CCCAA Image" />
         <div className="form-container">
-          <button onClick={this.populate}>Populate Form</button>
-          {this.state.currentStep !== "getData" ? (
-            <button onClick={this.getData} className="btn btn-primary">
-              Display Data
-            </button>
-          ) : (
-            <button onClick={this.backToForm} className="btn btn-primary">
-              Back To Form
-            </button>
-          )}
           <form
             onSubmit={this.handleSubmit}
-            className="needs-validation" noValidate
+            className="needs-validation"
+            noValidate
           >
-            <button type="submit" onSubmit={this.handleSubmit} className='btn btn-primary'>
-              Submit
+            <div className='top-btns'>
+              <button onClick={this.populate}>Populate Form</button>
+              {this.state.currentStep !== "getData" ? (
+                <button onClick={this.getData} className="btn btn-primary">
+                  Display Data
+                </button>
+              ) : (
+                <button onClick={this.backToForm} className="btn btn-primary">
+                  Back To Form
+                </button>
+              )}
+              <button type="submit" onSubmit={this.handleSubmit} className='btn btn-primary'>
+                Submit
             </button>
+            </div>
+
             <GetData currentStep={this.state.currentStep} />
             <StepOne
               currentStep={this.state.currentStep}

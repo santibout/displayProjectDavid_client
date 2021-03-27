@@ -20,19 +20,6 @@ class StepOne extends Component {
 
         {/* <p className="section-p">CCCAA Eligibility Form</p> */}
         <div className="row">
-          <div class="col-md-4">
-            <label for="validationCustom01" className="form-label">
-              First name
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="validationCustom01"
-              value="Mark"
-              required
-            />
-            <div className="valid-feedback">Looks good!</div>
-          </div>
           <div className="col-md">
             <div className="mb-3">
               <label htmlFor="eligibility" className="form-label">
