@@ -337,8 +337,8 @@ class App extends Component {
     console.log("data");
     console.log(data);
     axios
-      // .post("https://project-david.herokuapp.com/api/post", data)
-      .post(" http://localhost:3201/api/post", data)
+      .post("https://project-david.herokuapp.com/api/post", data)
+      // .post(" http://localhost:3201/api/post", data)
       .then((r) => {
         console.log("r: ", r);
       })
