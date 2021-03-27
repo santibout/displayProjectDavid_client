@@ -204,6 +204,7 @@ class App extends Component {
   }
 
   handleSubmit = (event) => {
+    console.log("post it");
     event.preventDefault();
     const data = {
       communityCollege: this.state.communityCollege,
@@ -321,8 +322,8 @@ class App extends Component {
     console.log("data");
     console.log(data);
     axios
-      .post("https://project-david.herokuapp.com/api/post", this.state)
-      // .post(" http://localhost:3201/api/post", data)
+      // .post("https://project-david.herokuapp.com/api/post", this.state)
+      .post(" http://localhost:3201/api/post", data)
       .then((r) => {
         console.log("r: ", r);
       })
@@ -505,27 +506,29 @@ class App extends Component {
       <div className="App">
         <img className="cccaImg" src={cccaaImg} alt="CCCAA Image" />
         <div className="form-container">
+          <div className="top-btns">
+            <button onClick={this.populate}>Populate Form</button>
+            {this.state.currentStep !== "getData" ? (
+              <button onClick={this.getData} className="btn btn-primary">
+                Display Data
+              </button>
+            ) : (
+              <button onClick={this.backToForm} className="btn btn-primary">
+                Back To Form
+              </button>
+            )}
+            <button
+              type="submit"
+              onClick={this.handleSubmit}
+              className="btn btn-primary"
+            >
+              Submit
+            </button>
+          </div>
           <form
-            onSubmit={this.handleSubmit}
             className="needs-validation"
             noValidate
           >
-            <div className='top-btns'>
-              <button onClick={this.populate}>Populate Form</button>
-              {this.state.currentStep !== "getData" ? (
-                <button onClick={this.getData} className="btn btn-primary">
-                  Display Data
-                </button>
-              ) : (
-                <button onClick={this.backToForm} className="btn btn-primary">
-                  Back To Form
-                </button>
-              )}
-              <button type="submit" onSubmit={this.handleSubmit} className='btn btn-primary'>
-                Submit
-            </button>
-            </div>
-
             <GetData currentStep={this.state.currentStep} />
             <StepOne
               currentStep={this.state.currentStep}

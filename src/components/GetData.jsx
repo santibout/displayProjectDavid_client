@@ -11,8 +11,8 @@ class StepOne extends Component {
 
   componentDidMount() {
     console.log("mounting");
-    axios.get(`https://project-david.herokuapp.com/api`).then((res) => {
-      // axios.get(`http://localhost:3201/api`).then((res) => {
+    // axios.get(`https://project-david.herokuapp.com/api`).then((res) => {
+    axios.get(`http://localhost:3201/api`).then((res) => {
       const gotData = res.data;
       console.log("got data: ", gotData);
       this.setState({ data: [...gotData] });
@@ -24,11 +24,13 @@ class StepOne extends Component {
       margin: "5px",
       //   listStyle: "none",
     };
-    const listItems = this.state.data.map((d) => {
+    const listItems = this.state.data.map((d, i) => {
       return (
         <div style={style}>
           <li key={d._id} />
-          <li>{d.formDescription}</li>
+          <li>
+            {d.formDescription}
+          </li>
           <li>{d.currentDate}</li>
           <li>{d.fullName}</li>
           <li>{d.gender}</li>
