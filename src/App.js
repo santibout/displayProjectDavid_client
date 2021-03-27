@@ -220,6 +220,24 @@ class App extends Component {
       highSchoolCityState: this.state.highSchoolCityState,
       dob: this.state.dob,
       highSchoolMonthYearGraduation: this.state.highSchoolMonthYearGraduation,
+      secondSport: this.state.secondSport,
+      secondSportCollege: this.state.secondSportCollege,
+      secondSportLevel: this.state.secondSportLevel,
+      secondSportSemester: this.state.secondSportSemester,
+      competitionYear: this.state.competitionYear,
+      secondSport: this.state.secondSportSemester,
+      secondSportCollege: this.state.secondSportCollege,
+      secondSportLevel: this.state.secondSportLevel,
+      secondSportSemester: this.state.secondSportSemester,
+      thirdSport: this.state.thirdSport,
+      thirdSportCollege: this.state.thirdSportCollege,
+      thirdSportLevel: this.state.thirdSportLevel,
+      thirdSportYear: this.state.thirdSportYear,
+      fourthSport: this.state.fourthSport,
+      fourthSportCollege: this.state.fourthSportCollege,
+      fourthSportLevel: this.state.fourthSportLevel,
+      fourthSportSemester: this.state.fourthSportSemester,
+      fourthSportYear: this.state.fourthSportYear,
       afterHS: [],
     };
     if (
@@ -524,10 +542,7 @@ class App extends Component {
               Submit
             </button>
           </div>
-          <form
-            className="needs-validation"
-            noValidate
-          >
+          <form className="needs-validation" noValidate>
             <GetData currentStep={this.state.currentStep} />
             <StepOne
               currentStep={this.state.currentStep}
