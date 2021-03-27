@@ -229,6 +229,7 @@ class App extends Component {
       thirdSport: this.state.thirdSport,
       thirdSportCollege: this.state.thirdSportCollege,
       thirdSportLevel: this.state.thirdSportLevel,
+      thirdSportSemester: this.state.thirdSportSemester,
       thirdSportYear: this.state.thirdSportYear,
       fourthSport: this.state.fourthSport,
       fourthSportCollege: this.state.fourthSportCollege,
