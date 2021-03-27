@@ -1,16 +1,18 @@
 import React, { Component } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 class StepOne extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
     };
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3201/api`).then((res) => {
+    console.log("mounting");
+    axios.get(`https://project-david.herokuapp.com/api`).then((res) => {
+      // axios.get(`http://localhost:3201/api`).then((res) => {
       const gotData = res.data;
       console.log("got data: ", gotData);
       this.setState({ data: [...gotData] });
@@ -23,7 +25,6 @@ class StepOne extends Component {
       //   listStyle: "none",
     };
     const listItems = this.state.data.map((d) => {
-      //   for (let x in d) {
       return (
         <div style={style}>
           <li key={d._id} />
@@ -118,15 +119,6 @@ class StepOne extends Component {
           <li>{d.signature}</li>
         </div>
       );
-      //   }
-
-      //   return (
-      //     <div className="data-display">
-      //         {{for(let x in d){
-
-      //         }}}
-      //      </div>
-      //   );
     });
 
     if (this.props.currentStep !== "getData") {
