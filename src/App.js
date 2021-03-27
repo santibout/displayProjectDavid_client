@@ -224,11 +224,8 @@ class App extends Component {
       secondSportCollege: this.state.secondSportCollege,
       secondSportLevel: this.state.secondSportLevel,
       secondSportSemester: this.state.secondSportSemester,
+      secondSportYear: this.state.secondSportYear,
       competitionYear: this.state.competitionYear,
-      secondSport: this.state.secondSportSemester,
-      secondSportCollege: this.state.secondSportCollege,
-      secondSportLevel: this.state.secondSportLevel,
-      secondSportSemester: this.state.secondSportSemester,
       thirdSport: this.state.thirdSport,
       thirdSportCollege: this.state.thirdSportCollege,
       thirdSportLevel: this.state.thirdSportLevel,
@@ -339,8 +336,8 @@ class App extends Component {
     console.log("data");
     console.log(data);
     axios
-      .post("https://project-david.herokuapp.com/api/post", data)
-      // .post(" http://localhost:3201/api/post", data)
+      // .post("https://project-david.herokuapp.com/api/post", data)
+      .post(" http://localhost:3201/api/post", data)
       .then((r) => {
         console.log("r: ", r);
       })
