@@ -339,11 +339,11 @@ class App extends Component {
     console.log("data");
     console.log(data);
     axios
-      // .post("https://project-david.herokuapp.com/api/post", data)
-      .post(" http://localhost:3201/api/post", data)
+      .post("https://display-project-david-server.herokuapp.com/api/post", data)
+      // .post(" http://localhost:3201/api/post", data)
       .then((r) => {
         console.log("r: ", r);
-        axios.get('http://localhost:3201/fetch-pdf')
+        axios.get("https://display-project-david-server.herokuapp.com/fetch-pdf")
         .then(() => console.log('opening file'))
         .catch(() => console.log('error'))
       })
