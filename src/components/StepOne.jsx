@@ -55,6 +55,21 @@ class StepOne extends Component {
           </div>
 
           <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <input
+              className="form-control"
+              type="email"
+              id="email"
+              name="email"
+              value={this.props.email}
+              onChange={this.props.handleChange}
+              placeholder="example: example@gmail.com"
+            />
+          </div>
+
+          <div className="mb-3">
             <label htmlFor="fullName" className="form-label">
               Full Name(Last, First, Middle Initial)
             </label>

@@ -44,6 +44,7 @@ class App extends Component {
       // Step 1
       formDescription: "",
       currentDate: "",
+      email: "",
       fullName: "",
       gender: "",
       streetAddress: "",
@@ -210,6 +211,7 @@ class App extends Component {
       athleticConference: this.state.athleticConference,
       sport: this.state.sport,
       phoneNumber: this.state.phoneNumber,
+      email: this.state.email,
       fullName: this.state.fullName,
       streetAddress: this.state.streetAddress,
       cityStateZip: this.state.cityStateZip,
@@ -337,10 +339,13 @@ class App extends Component {
     console.log("data");
     console.log(data);
     axios
-      .post("https://project-david.herokuapp.com/api/post", data)
-      // .post(" http://localhost:3201/api/post", data)
+      // .post("https://project-david.herokuapp.com/api/post", data)
+      .post(" http://localhost:3201/api/post", data)
       .then((r) => {
         console.log("r: ", r);
+        axios.get('http://localhost:3201/fetch-pdf')
+        .then(() => console.log('opening file'))
+        .catch(() => console.log('error'))
       })
       .catch((err) => console.log("err in axios: ", err));
   };
@@ -523,7 +528,7 @@ class App extends Component {
         <div className="form-container">
           <div className="top-btns">
             <button onClick={this.populate}>Populate Form</button>
-            {this.state.currentStep !== "getData" ? (
+            {/* {this.state.currentStep !== "getData" ? (
               <button onClick={this.getData} className="btn btn-primary">
                 Display Data
               </button>
@@ -531,7 +536,7 @@ class App extends Component {
               <button onClick={this.backToForm} className="btn btn-primary">
                 Back To Form
               </button>
-            )}
+            )} */}
             <button
               type="submit"
               onClick={this.handleSubmit}
@@ -547,6 +552,7 @@ class App extends Component {
               handleChange={this.handleChange}
               formDescription={this.state.formDescription}
               currentDate={this.state.currentDate}
+              email={this.state.email}
               fullName={this.state.fullName}
               gender={this.state.gender}
               address={this.state.streetAddress}
