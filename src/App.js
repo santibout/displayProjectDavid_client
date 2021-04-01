@@ -539,9 +539,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Document file={this.state.pdf}>
-          <Page pageNumber={1} />
-        </Document>
         <img className="cccaImg" src={cccaaImg} alt="CCCAA Image" />
         <div className="form-container">
           <div className="top-btns">
