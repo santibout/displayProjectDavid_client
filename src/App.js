@@ -28,6 +28,8 @@ import StepTwentyFour from "./components/StepTwentyFour";
 import StepTwentyFive from "./components/StepTwentyFive";
 import StepTwentySix from "./components/StepTwentySix";
 import GetData from "./components/GetData";
+import { Document, Page, pdfjs } from "react-pdf";
+// pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 import axios from "axios";
 
@@ -171,6 +173,8 @@ class App extends Component {
       // Step 26
       studentEligibility: "",
       signature: "",
+
+      pdf: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -343,9 +347,20 @@ class App extends Component {
       // .post(" http://localhost:3201/api/post", data)
       .then((r) => {
         console.log("r: ", r);
-        axios.get("https://display-project-david-server.herokuapp.com/fetch-pdf")
-        .then(() => console.log('opening file'))
-        .catch(() => console.log('error'))
+        axios
+          .get("https://display-project-david-server.herokuapp.com/fetch-pdf", {
+          // .get("http://localhost:3201/fetch-pdf", {
+            responseType: "blob"
+          })
+          .then((res) => {
+            const pdfBlob = new Blob([res.data], { type: "application/pdf" });
+            //  const url = window.URL.createObjectURL(pdfBlob)
+            const fileURL = URL.createObjectURL(pdfBlob);
+            window.open(fileURL);
+            // saveAs(pdfBlob, "newPdf.pdf");
+            this.setState({ pdf: pdfBlob });
+          })
+          .catch((err) => console.log("error: ", err));
       })
       .catch((err) => console.log("err in axios: ", err));
   };
@@ -524,6 +539,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Document file={this.state.pdf}>
+          <Page pageNumber={1} />
+        </Document>
         <img className="cccaImg" src={cccaaImg} alt="CCCAA Image" />
         <div className="form-container">
           <div className="top-btns">
